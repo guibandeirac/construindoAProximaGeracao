@@ -360,6 +360,11 @@ const PIX_QR_IMAGE = "assets/pix-qr.png";
 const PIX_WHATSAPP = "558496830709";
 const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyTiFhYnmY94J6EvpS8lKUVs8qemxsCxy8_VS3oaOTaDQhAfupMYEEeZT3H1SWfQ68x/exec";
 
+function formatTimestamp(date) {
+  const pad = n => String(n).padStart(2, "0");
+  return `${pad(date.getDate())}-${pad(date.getMonth() + 1)}-${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
 function sendLeadToSheet(payload) {
   if (!SHEETS_WEBHOOK_URL) return;
   fetch(SHEETS_WEBHOOK_URL, {
@@ -426,12 +431,12 @@ class Component extends DCLogic {
       backToMethod: () => this.setState({ modalStep: "method" }),
       selectCredit: () => {
         const { name, phone, email } = this.state.form;
-        sendLeadToSheet({ name, phone, email, paymentMethod: "Cartão de crédito", timestamp: new Date().toISOString() });
+        sendLeadToSheet({ name, phone, email, paymentMethod: "Cartão de crédito", timestamp: formatTimestamp(new Date()) });
         window.location.href = this.props.creditCheckoutUrl || CREDIT_CHECKOUT_URL;
       },
       selectPix: () => {
         const { name, phone, email } = this.state.form;
-        sendLeadToSheet({ name, phone, email, paymentMethod: "Pix", timestamp: new Date().toISOString() });
+        sendLeadToSheet({ name, phone, email, paymentMethod: "Pix", timestamp: formatTimestamp(new Date()) });
         this.setState({ modalStep: "pix" });
       },
       copyPixKey: () => {
