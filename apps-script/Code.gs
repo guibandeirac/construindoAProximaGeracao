@@ -11,7 +11,7 @@
 // true/false nelas, não texto.
 
 const EBOOK_FILE_ID = "1kcBt14Hy-3Iiui9_qWRT_hzRjcGMBZr6"; // E-book Livre da Pornografia.pdf
-const SEND_FROM_ALIAS = ""; // TEMPORARIAMENTE desativado para teste de diagnóstico — depois volta para "construindoaproximageracao@gmail.com"
+const SEND_FROM_ALIAS = "construindoaproximageracao@gmail.com"; // precisa estar verificado em "Enviar e-mail como" na conta dona do script
 
 // TESTE MANUAL: selecione "testEnvioManual" no menu suspenso ao lado do
 // botão "Depurar/Executar" no topo do editor, e clique em "Executar".
