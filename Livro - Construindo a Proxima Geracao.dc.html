@@ -80,10 +80,10 @@
         <span style="font-family:'Anton',sans-serif;font-size:18px;letter-spacing:.04em;line-height:1">CONSTRUINDO<br><span style="color:#E43242">A PRÓXIMA GERAÇÃO</span></span>
       </div>
       <nav class="bcpg-nav" style="margin-left:auto;display:flex;align-items:center;gap:28px;font-size:14px;font-weight:700">
-        <a href="#livro" style="color:#111110">O livro</a>
-        <a href="#conteudo" style="color:#111110">Conteúdo</a>
-        <a href="#autor" style="color:#111110">Autor</a>
-        <a href="#pre-venda" style="color:#111110">Pré-venda</a>
+        <a href="#livro" onClick="{{ scrollToLivro }}" style="color:#111110">O livro</a>
+        <a href="#conteudo" onClick="{{ scrollToConteudo }}" style="color:#111110">Conteúdo</a>
+        <a href="#autor" onClick="{{ scrollToAutor }}" style="color:#111110">Autor</a>
+        <a href="#pre-venda" onClick="{{ scrollToPreVenda }}" style="color:#111110">Pré-venda</a>
       </nav>
       <button class="bcpg-header-cta" onClick="{{ openModal }}" style="margin-left:auto;background:#E43242;color:#F4EDDB;padding:12px 22px;border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.02em;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;white-space:nowrap" style-hover="background:#111110;color:#F4EDDB">Garantir meu exemplar</button>
     </div>
@@ -98,7 +98,7 @@
       <p style="font-size:19px;line-height:1.6;color:#3A3730;max-width:520px;margin:24px 0 0;text-wrap:pretty">Um chamado urgente para todo cristão que ama Jesus e deseja ver crianças, adolescentes e jovens encontrando seu propósito em Cristo.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center">
         <button onClick="{{ openModal }}" style="background:#E43242;color:#F4EDDB;padding:18px 34px;border-radius:100px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="background:#111110">Entrar na pré-venda</button>
-        <a href="#livro" style="border:1.5px solid rgba(17,17,16,.25);color:#111110;padding:17px 30px;border-radius:100px;font-size:16px;font-weight:700" style-hover="border-color:#111110;background:rgba(17,17,16,.05)">Ler um trecho</a>
+        <a href="#livro" onClick="{{ scrollToLivro }}" style="border:1.5px solid rgba(17,17,16,.25);color:#111110;padding:17px 30px;border-radius:100px;font-size:16px;font-weight:700" style-hover="border-color:#111110;background:rgba(17,17,16,.05)">Ler um trecho</a>
       </div>
       <div class="bcpg-hero-stats" style="display:flex;flex-wrap:wrap;gap:40px;margin-top:44px;border-top:1px solid rgba(17,17,16,.14);padding-top:24px">
         <div>
@@ -332,9 +332,9 @@
       <div style="display:flex;gap:56px;flex-wrap:wrap;font-size:15px">
         <div style="display:flex;flex-direction:column;gap:10px">
           <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Livro</span>
-          <a href="#livro" style="color:#F4EDDB">Sobre</a>
-          <a href="#conteudo" style="color:#F4EDDB">Conteúdo</a>
-          <a href="#pre-venda" style="color:#F4EDDB">Pré-venda</a>
+          <a href="#livro" onClick="{{ scrollToLivro }}" style="color:#F4EDDB">Sobre</a>
+          <a href="#conteudo" onClick="{{ scrollToConteudo }}" style="color:#F4EDDB">Conteúdo</a>
+          <a href="#pre-venda" onClick="{{ scrollToPreVenda }}" style="color:#F4EDDB">Pré-venda</a>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Contato</span>
@@ -359,6 +359,13 @@ const PIX_RECEIVER_NAME = "Pedro Lucas Campos Lacava";
 const PIX_QR_IMAGE = "assets/pix-qr.png";
 const PIX_WHATSAPP = "558496830709";
 const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyTiFhYnmY94J6EvpS8lKUVs8qemxsCxy8_VS3oaOTaDQhAfupMYEEeZT3H1SWfQ68x/exec";
+
+function scrollToSection(id) {
+  return e => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+}
 
 function formatTimestamp(date) {
   const pad = n => String(n).padStart(2, "0");
@@ -413,6 +420,10 @@ class Component extends DCLogic {
       hasPixQr: !!PIX_QR_IMAGE,
       noPixQr: !PIX_QR_IMAGE,
       copyLabel: this.state.pixCopied ? "Copiado!" : "Copiar código Pix",
+      scrollToLivro: scrollToSection("livro"),
+      scrollToConteudo: scrollToSection("conteudo"),
+      scrollToAutor: scrollToSection("autor"),
+      scrollToPreVenda: scrollToSection("pre-venda"),
       openModal: () => this.setState({ modalOpen: true, modalStep: "form", formError: false, pixCopied: false }),
       closeModal: () => this.setState({ modalOpen: false }),
       stopClick: e => e.stopPropagation(),
