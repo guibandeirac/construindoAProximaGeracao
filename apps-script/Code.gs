@@ -10,7 +10,7 @@
 // formatadas como caixa de seleção (checkbox) — o script escreve
 // true/false nelas, não texto.
 
-const EBOOK_FILE_ID = ""; // TODO: cole aqui o ID do arquivo PDF do e-book no Google Drive
+const EBOOK_FILE_ID = "1kcBt14Hy-3Iiui9_qWRT_hzRjcGMBZr6"; // E-book Livre da Pornografia.pdf
 const SEND_FROM_ALIAS = "construindoaproximageracao@gmail.com"; // precisa estar verificado em "Enviar e-mail como" na conta dona do script
 
 function doPost(e) {
