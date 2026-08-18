@@ -1,0 +1,18 @@
+/* BotConversa — Spacing scale (8pt-ish rhythm, moderate density) */
+
+:root {
+  --bc-space-xxs: 4px;   /* micro separations inside controls */
+  --bc-space-xs: 8px;    /* icon gaps, tight groups */
+  --bc-space-sm: 12px;   /* gaps between small controls */
+  --bc-space-md: 16px;   /* related elements */
+  --bc-space-lg: 24px;   /* card padding, section spacing */
+  --bc-space-xl: 32px;   /* page-title to first block, horizontal content margin */
+  --bc-space-xxl: 48px;  /* large section breathing room */
+
+  /* Layout constants */
+  --bc-sidebar-width: 240px;
+  --bc-sidebar-collapsed: 64px;
+  --bc-topbar-height: 64px;
+  --bc-content-margin: 32px;
+  --bc-hit-target-min: 44px;
+}

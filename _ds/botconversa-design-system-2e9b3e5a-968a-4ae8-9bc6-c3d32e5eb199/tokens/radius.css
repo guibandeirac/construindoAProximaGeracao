@@ -1,0 +1,12 @@
+/* BotConversa — Radius scale (consistent, friendly rounding) */
+
+:root {
+  --bc-radius-xs: 4px;    /* checkboxes, tiny indicators */
+  --bc-radius-sm: 6px;    /* status pills / badges */
+  --bc-radius-md: 8px;    /* buttons, inputs, dropdowns, chips */
+  --bc-radius-lg: 10px;   /* table/card rows, nav blocks */
+  --bc-radius-xl: 12px;   /* small cards, form groups */
+  --bc-radius-xxl: 16px;  /* large cards, panels, containers */
+  --bc-radius-pill: 100px;/* fully-rounded pills */
+  --bc-radius-circle: 50%;/* avatars */
+}

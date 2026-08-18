@@ -1,0 +1,10 @@
+/* BotConversa — Elevation
+   The system uses very little depth. Separation comes from the canvas↔surface
+   contrast, subtle borders and generous radii — not heavy shadows. */
+
+:root {
+  --bc-shadow-card: 0 5px 10px rgba(0, 0, 0, 0.03);        /* light cards */
+  --bc-shadow-control: 0 1px 3px rgba(0, 0, 0, 0.08);      /* minimal floating controls */
+  --bc-shadow-primary-green: 0 6px 10px rgba(118, 195, 81, 0.25); /* only on important green actions */
+  --bc-shadow-popover: 0 8px 24px rgba(41, 41, 47, 0.12);  /* dropdowns / menus */
+}

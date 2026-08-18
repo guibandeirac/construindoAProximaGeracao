@@ -1,0 +1,64 @@
+/* BotConversa — Color tokens
+   Extracted from the real product UI (DESIGN.md source of truth). */
+
+:root {
+  /* ---- Brand / action ---- */
+  --bc-primary: #3083FF;          /* Action blue — primary actions, links, active nav */
+  --bc-primary-hover: #1F6FE5;    /* Hover on blue primary */
+  --bc-primary-text: #155EC7;     /* Blue text on soft-blue surfaces */
+  --bc-primary-soft: #EAF3FF;     /* Active nav bg, soft blue buttons, light accents */
+
+  --bc-secondary: #76C451;        /* Growth green — create / export / positive actions */
+  --bc-secondary-hover: #67B441;  /* Hover on green */
+  --bc-secondary-soft: rgba(118, 195, 81, 0.10); /* Soft green button bg (outline green) */
+
+  /* ---- Semantic status ---- */
+  --bc-success: #28C765;          /* Connected / Verified / Active dots + text */
+  --bc-success-text: #0E7A3A;
+  --bc-success-soft: #E9F9F0;
+  --bc-danger: #A31912;           /* Error / critical pending */
+  --bc-danger-text: #A31912;
+  --bc-danger-soft: #FDECEE;
+  --bc-warning: #E24B41;          /* Inline pending warning text (e.g. "Escolha um fluxo") */
+
+  /* ---- Ink / text neutrals ---- */
+  --bc-ink: #2B3238;              /* Titles, nav, high-priority text */
+  --bc-ink-strong: #29292F;       /* Strong headings, dark segmented controls */
+  --bc-text: #313940;             /* Body text in tables, cards, labels */
+  --bc-muted: #6B7074;            /* Descriptions, metadata, subtitles, placeholders */
+  --bc-subtle: #848B91;           /* Secondary data, dates, inactive icons */
+  --bc-disabled: #BAC3CC;         /* Disabled actions / icons */
+  --bc-disabled-text: #59636E;
+
+  /* ---- Lines & surfaces ---- */
+  --bc-border: #EFF2F3;           /* Subtle dividers, card/input outlines */
+  --bc-border-strong: #E6EAEE;    /* Stronger dividers, table/card borders */
+  --bc-surface: #FFFFFF;          /* Cards, tables, panels, sidebar */
+  --bc-canvas: #F8F9FA;           /* Global app background */
+  --bc-overlay-soft: #F2F4F6;     /* Soft raised control surfaces */
+  --bc-input-bg: rgba(43, 50, 56, 0.05); /* Input / search field fill */
+
+  /* ---- Navigation ---- */
+  --bc-sidebar-active: #EAF3FF;
+  --bc-icon-inactive: #848B91;
+
+  /* ---- Avatar palette (contact initials, distinct hues) ---- */
+  --bc-avatar-1: #F2739D;
+  --bc-avatar-2: #C15FD6;
+  --bc-avatar-3: #4FC3E8;
+  --bc-avatar-4: #F0993E;
+  --bc-avatar-5: #E15B5B;
+  --bc-avatar-6: #5B8DEF;
+  --bc-avatar-7: #57B894;
+
+  /* ---- Semantic aliases (use these in components) ---- */
+  --text-strong: var(--bc-ink);
+  --text-body: var(--bc-text);
+  --text-muted: var(--bc-muted);
+  --text-subtle: var(--bc-subtle);
+  --surface-card: var(--bc-surface);
+  --surface-canvas: var(--bc-canvas);
+  --border-card: var(--bc-border-strong);
+  --action-primary: var(--bc-primary);
+  --action-create: var(--bc-secondary);
+}
