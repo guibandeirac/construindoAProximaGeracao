@@ -272,17 +272,54 @@
       <div onClick="{{ stopClick }}" style="background:#FFFDF6;color:#111110;border-radius:20px;padding:36px;max-width:440px;width:100%;position:relative;box-shadow:0 24px 60px rgba(17,17,16,.3)">
         <button onClick="{{ closeModal }}" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#6E6A5E;line-height:1">✕</button>
         <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#E43242">Garantir exemplar</div>
-        <h3 style="font-family:'Anton',sans-serif;font-size:26px;line-height:1.05;margin:12px 0 6px;text-transform:uppercase">Seus dados para o checkout</h3>
-        <p style="font-size:14px;color:#6E6A5E;margin:0 0 20px;line-height:1.5">Preencha para continuar para o pagamento.</p>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <input type="text" placeholder="Nome completo" value="{{ form.name }}" onChange="{{ onFormChangeName }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
-          <input type="tel" placeholder="Telefone (WhatsApp)" value="{{ form.phone }}" onChange="{{ onFormChangePhone }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
-          <input type="email" placeholder="Melhor e-mail" value="{{ form.email }}" onChange="{{ onFormChangeEmail }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
-        </div>
-        <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
-          <div style="margin-top:10px;font-size:13px;color:#E43242;font-weight:700">Preencha nome, telefone e e-mail para continuar.</div>
+
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <h3 style="font-family:'Anton',sans-serif;font-size:26px;line-height:1.05;margin:12px 0 6px;text-transform:uppercase">Seus dados para o checkout</h3>
+          <p style="font-size:14px;color:#6E6A5E;margin:0 0 20px;line-height:1.5">Preencha para continuar para o pagamento.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <input type="text" placeholder="Nome completo" value="{{ form.name }}" onChange="{{ onFormChangeName }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+            <input type="tel" placeholder="Telefone (WhatsApp)" value="{{ form.phone }}" onChange="{{ onFormChangePhone }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+            <input type="email" placeholder="Melhor e-mail" value="{{ form.email }}" onChange="{{ onFormChangeEmail }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+          </div>
+          <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:10px;font-size:13px;color:#E43242;font-weight:700">Preencha nome, telefone e e-mail para continuar.</div>
+          </sc-if>
+          <button onClick="{{ onFormSubmit }}" style="width:100%;margin-top:18px;padding:16px;border:none;border-radius:100px;background:#E43242;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:16px;font-weight:800;cursor:pointer" style-hover="background:#111110">Continuar para o pagamento</button>
         </sc-if>
-        <button onClick="{{ onFormSubmit }}" style="width:100%;margin-top:18px;padding:16px;border:none;border-radius:100px;background:#E43242;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:16px;font-weight:800;cursor:pointer" style-hover="background:#111110">Continuar para o pagamento</button>
+
+        <sc-if value="{{ showMethodChoice }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Anton',sans-serif;font-size:26px;line-height:1.05;margin:12px 0 6px;text-transform:uppercase">Como você quer pagar?</h3>
+          <p style="font-size:14px;color:#6E6A5E;margin:0 0 20px;line-height:1.5">Valor: <strong style="color:#111110">{{ preOrderPrice }}</strong></p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <button onClick="{{ selectCredit }}" style="width:100%;text-align:left;display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:14px;border:1.5px solid rgba(17,17,16,.15);background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="border-color:#111110">
+              <span style="font-size:16px;font-weight:800;color:#111110">💳 Cartão de crédito</span>
+              <span style="font-size:13px;color:#6E6A5E">Em até 12x, via InfinitePay</span>
+            </button>
+            <button onClick="{{ selectPix }}" style="width:100%;text-align:left;display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:14px;border:1.5px solid rgba(17,17,16,.15);background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="border-color:#111110">
+              <span style="font-size:16px;font-weight:800;color:#111110">🔑 Pix</span>
+              <span style="font-size:13px;color:#6E6A5E">Copia e cola ou QR Code</span>
+            </button>
+          </div>
+          <button onClick="{{ backToForm }}" style="width:100%;margin-top:16px;padding:10px;border:none;background:none;color:#6E6A5E;font-size:13px;cursor:pointer;text-decoration:underline;font-family:'Nunito Sans',sans-serif">Voltar</button>
+        </sc-if>
+
+        <sc-if value="{{ showPix }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Anton',sans-serif;font-size:26px;line-height:1.05;margin:12px 0 6px;text-transform:uppercase">Pagar com Pix</h3>
+          <p style="font-size:14px;color:#6E6A5E;margin:0 0 16px;line-height:1.5">Valor: <strong style="color:#111110">{{ preOrderPrice }}</strong></p>
+          <sc-if value="{{ hasPixQr }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ pixQrImage }}" alt="QR Code Pix" style="width:200px;height:200px;display:block;margin:0 auto 16px;border-radius:12px;border:1px solid rgba(17,17,16,.12)">
+          </sc-if>
+          <sc-if value="{{ noPixQr }}" hint-placeholder-val="{{ true }}">
+            <div style="width:200px;height:200px;margin:0 auto 16px;border:1.5px dashed rgba(17,17,16,.25);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:12px;color:#6E6A5E">QR Code em breve — use a chave abaixo</div>
+          </sc-if>
+          <div style="background:#F4EDDB;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <span style="font-size:14px;font-weight:700;word-break:break-all">{{ pixKey }}</span>
+            <button onClick="{{ copyPixKey }}" style="flex:none;background:#111110;color:#F4EDDB;border:none;border-radius:100px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito Sans',sans-serif">{{ copyLabel }}</button>
+          </div>
+          <p style="font-size:13px;color:#6E6A5E;margin:16px 0 0;line-height:1.5">Depois de pagar, envie o comprovante pelo WhatsApp para confirmarmos sua reserva.</p>
+          <button onClick="{{ openPixWhatsapp }}" style="width:100%;margin-top:14px;padding:16px;border:none;border-radius:100px;background:#E43242;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:16px;font-weight:800;cursor:pointer" style-hover="background:#111110">Enviar comprovante no WhatsApp</button>
+          <button onClick="{{ backToMethod }}" style="width:100%;margin-top:10px;padding:10px;border:none;background:none;color:#6E6A5E;font-size:13px;cursor:pointer;text-decoration:underline;font-family:'Nunito Sans',sans-serif">Voltar</button>
+        </sc-if>
       </div>
     </div>
   </sc-if>
@@ -316,12 +353,19 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;checkoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;creditCheckoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;http://link.infinitepay.io/pedro-lucas-u7e/VC1DLUMtSQ-tCEBNagaxO-44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
+const CREDIT_CHECKOUT_URL = "http://link.infinitepay.io/pedro-lucas-u7e/VC1DLUMtSQ-tCEBNagaxO-44,90";
+const PIX_KEY = "";
+const PIX_QR_IMAGE = "";
+const PIX_WHATSAPP = "558496830709";
+
 class Component extends DCLogic {
   state = {
     openFaq: 0,
     modalOpen: false,
+    modalStep: "form",
     formError: false,
+    pixCopied: false,
     form: { name: "", phone: "", email: "" }
   };
 
@@ -330,7 +374,7 @@ class Component extends DCLogic {
       ["Como funciona a retirada do livro?", "A retirada é presencial, no dia 26 de setembro de 2026, no A13 — CCVIDEIRA CANDELÁRIA. Não trabalhamos com envio para este lançamento."],
       ["Para quem é este livro?", "Pais, líderes de jovens e adolescentes, voluntários, discipuladores e qualquer cristão que queira formar a próxima geração — não é um livro só para pastores."],
       ["Posso comprar em lote para minha igreja?", "Sim. Temos condições especiais a partir de 10 exemplares para igrejas, ministérios e escolas. Fale com a gente pelo WhatsApp: (84) 9683-0709."],
-      ["Como funciona o pagamento na pré-venda?", "Ao preencher seus dados você é direcionado para o checkout. Após a confirmação da compra, você retira seu exemplar no A13 — CCVIDEIRA CANDELÁRIA, no dia 26.09."]
+      ["Como funciona o pagamento na pré-venda?", "Depois de preencher seus dados, você escolhe entre cartão de crédito (em até 12x, via InfinitePay) ou Pix (chave ou QR Code, com confirmação manual pelo WhatsApp). Após a confirmação da compra, você retira seu exemplar no A13 — CCVIDEIRA CANDELÁRIA, no dia 26.09."]
     ];
 
     const setField = field => e => this.setState(s => ({ form: { ...s.form, [field]: e.target.value } }));
@@ -342,9 +386,17 @@ class Component extends DCLogic {
       eventLocation: this.props.eventLocation ?? "A13 · CCVIDEIRA CANDELÁRIA",
       ctaLabel: this.props.ctaLabel ?? "Garantir meu exemplar",
       modalOpen: this.state.modalOpen,
+      showForm: this.state.modalStep === "form",
+      showMethodChoice: this.state.modalStep === "method",
+      showPix: this.state.modalStep === "pix",
       form: this.state.form,
       formError: this.state.formError,
-      openModal: () => this.setState({ modalOpen: true, formError: false }),
+      pixKey: PIX_KEY || "Chave Pix ainda não configurada",
+      pixQrImage: PIX_QR_IMAGE,
+      hasPixQr: !!PIX_QR_IMAGE,
+      noPixQr: !PIX_QR_IMAGE,
+      copyLabel: this.state.pixCopied ? "Copiado!" : "Copiar",
+      openModal: () => this.setState({ modalOpen: true, modalStep: "form", formError: false, pixCopied: false }),
       closeModal: () => this.setState({ modalOpen: false }),
       stopClick: e => e.stopPropagation(),
       onFormChangeName: setField("name"),
@@ -356,7 +408,25 @@ class Component extends DCLogic {
           this.setState({ formError: true });
           return;
         }
-        window.location.href = this.props.checkoutUrl || "#";
+        this.setState({ modalStep: "method" });
+      },
+      backToForm: () => this.setState({ modalStep: "form" }),
+      backToMethod: () => this.setState({ modalStep: "method" }),
+      selectCredit: () => {
+        window.location.href = this.props.creditCheckoutUrl || CREDIT_CHECKOUT_URL;
+      },
+      selectPix: () => this.setState({ modalStep: "pix" }),
+      copyPixKey: () => {
+        const key = PIX_KEY;
+        if (!key) return;
+        navigator.clipboard?.writeText(key);
+        this.setState({ pixCopied: true });
+        setTimeout(() => this.setState({ pixCopied: false }), 2000);
+      },
+      openPixWhatsapp: () => {
+        const { name } = this.state.form;
+        const msg = encodeURIComponent(`Olá! Fiz o Pix da pré-venda do livro "Construindo a Próxima Geração"${name ? ` (nome: ${name})` : ""}. Segue o comprovante.`);
+        window.open(`https://wa.me/${PIX_WHATSAPP}?text=${msg}`, "_blank", "noopener");
       },
       pillars: [
         { num: "01", title: "Chamado", text: "Entenda por que Deus escolhe pessoas comuns para formar quem vem depois." },
