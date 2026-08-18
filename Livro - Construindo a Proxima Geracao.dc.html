@@ -310,12 +310,11 @@
             <img src="{{ pixQrImage }}" alt="QR Code Pix" style="width:200px;height:200px;display:block;margin:0 auto 16px;border-radius:12px;border:1px solid rgba(17,17,16,.12)">
           </sc-if>
           <sc-if value="{{ noPixQr }}" hint-placeholder-val="{{ true }}">
-            <div style="width:200px;height:200px;margin:0 auto 16px;border:1.5px dashed rgba(17,17,16,.25);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:12px;color:#6E6A5E">QR Code em breve — use a chave abaixo</div>
+            <div style="width:200px;height:200px;margin:0 auto 16px;border:1.5px dashed rgba(17,17,16,.25);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:12px;color:#6E6A5E">QR Code em breve — use o código abaixo</div>
           </sc-if>
-          <div style="background:#F4EDDB;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px">
-            <span style="font-size:14px;font-weight:700;word-break:break-all">{{ pixKey }}</span>
-            <button onClick="{{ copyPixKey }}" style="flex:none;background:#111110;color:#F4EDDB;border:none;border-radius:100px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito Sans',sans-serif">{{ copyLabel }}</button>
-          </div>
+          <button onClick="{{ copyPixKey }}" style="width:100%;padding:16px;border:none;border-radius:100px;background:#111110;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer" style-hover="background:#E43242">{{ copyLabel }}</button>
+          <p style="font-size:12px;color:#6E6A5E;margin:10px 0 0;line-height:1.5;text-align:center">Escaneie o QR Code ou cole o código copiado no Pix Copia e Cola do seu banco — o valor já vem certo.</p>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(17,17,16,.12);font-size:12px;color:#6E6A5E;line-height:1.6">Para conferir: chave {{ pixKeyDisplay }} · {{ pixReceiverName }}</div>
           <p style="font-size:13px;color:#6E6A5E;margin:16px 0 0;line-height:1.5">Depois de pagar, envie o comprovante pelo WhatsApp para confirmarmos sua reserva.</p>
           <button onClick="{{ openPixWhatsapp }}" style="width:100%;margin-top:14px;padding:16px;border:none;border-radius:100px;background:#E43242;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:16px;font-weight:800;cursor:pointer" style-hover="background:#111110">Enviar comprovante no WhatsApp</button>
           <button onClick="{{ backToMethod }}" style="width:100%;margin-top:10px;padding:10px;border:none;background:none;color:#6E6A5E;font-size:13px;cursor:pointer;text-decoration:underline;font-family:'Nunito Sans',sans-serif">Voltar</button>
@@ -341,7 +340,6 @@
           <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Contato</span>
           <a href="https://www.instagram.com/pedrolacava_/" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">Instagram</a>
           <a href="https://wa.me/558496830709" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">WhatsApp</a>
-          <a href="#pre-venda" style="color:#F4EDDB">E-mail</a>
           <a href="https://wa.me/558496830709" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">Compras em lote</a>
         </div>
       </div>
@@ -355,9 +353,22 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;creditCheckoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;http://link.infinitepay.io/pedro-lucas-u7e/VC1DLUMtSQ-tCEBNagaxO-44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
 const CREDIT_CHECKOUT_URL = "http://link.infinitepay.io/pedro-lucas-u7e/VC1DLUMtSQ-tCEBNagaxO-44,90";
-const PIX_KEY = "";
-const PIX_QR_IMAGE = "";
+const PIX_COPY_CODE = "00020126360014br.gov.bcb.pix0114+5584998130710520400005303986540544.905802BR5925PEDRO LUCAS CAMPOS LACAVA6005NATAL62070503***6304157F";
+const PIX_KEY_DISPLAY = "+55 (84) 99813-0710";
+const PIX_RECEIVER_NAME = "Pedro Lucas Campos Lacava";
+const PIX_QR_IMAGE = "assets/pix-qr.png";
 const PIX_WHATSAPP = "558496830709";
+const SHEETS_WEBHOOK_URL = ""; // TODO: cole aqui a URL do Google Apps Script (Web App) para registrar os leads na planilha
+
+function sendLeadToSheet(payload) {
+  if (!SHEETS_WEBHOOK_URL) return;
+  fetch(SHEETS_WEBHOOK_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+}
 
 class Component extends DCLogic {
   state = {
@@ -391,11 +402,12 @@ class Component extends DCLogic {
       showPix: this.state.modalStep === "pix",
       form: this.state.form,
       formError: this.state.formError,
-      pixKey: PIX_KEY || "Chave Pix ainda não configurada",
+      pixKeyDisplay: PIX_KEY_DISPLAY,
+      pixReceiverName: PIX_RECEIVER_NAME,
       pixQrImage: PIX_QR_IMAGE,
       hasPixQr: !!PIX_QR_IMAGE,
       noPixQr: !PIX_QR_IMAGE,
-      copyLabel: this.state.pixCopied ? "Copiado!" : "Copiar",
+      copyLabel: this.state.pixCopied ? "Copiado!" : "Copiar código Pix",
       openModal: () => this.setState({ modalOpen: true, modalStep: "form", formError: false, pixCopied: false }),
       closeModal: () => this.setState({ modalOpen: false }),
       stopClick: e => e.stopPropagation(),
@@ -413,13 +425,17 @@ class Component extends DCLogic {
       backToForm: () => this.setState({ modalStep: "form" }),
       backToMethod: () => this.setState({ modalStep: "method" }),
       selectCredit: () => {
+        const { name, phone, email } = this.state.form;
+        sendLeadToSheet({ name, phone, email, paymentMethod: "Cartão de crédito", timestamp: new Date().toISOString() });
         window.location.href = this.props.creditCheckoutUrl || CREDIT_CHECKOUT_URL;
       },
-      selectPix: () => this.setState({ modalStep: "pix" }),
+      selectPix: () => {
+        const { name, phone, email } = this.state.form;
+        sendLeadToSheet({ name, phone, email, paymentMethod: "Pix", timestamp: new Date().toISOString() });
+        this.setState({ modalStep: "pix" });
+      },
       copyPixKey: () => {
-        const key = PIX_KEY;
-        if (!key) return;
-        navigator.clipboard?.writeText(key);
+        navigator.clipboard?.writeText(PIX_COPY_CODE);
         this.setState({ pixCopied: true });
         setTimeout(() => this.setState({ pixCopied: false }), 2000);
       },
