@@ -13,6 +13,15 @@
 const EBOOK_FILE_ID = "1kcBt14Hy-3Iiui9_qWRT_hzRjcGMBZr6"; // E-book Livre da Pornografia.pdf
 const SEND_FROM_ALIAS = ""; // TEMPORARIAMENTE desativado para teste de diagnóstico — depois volta para "construindoaproximageracao@gmail.com"
 
+// TESTE MANUAL: selecione "testEnvioManual" no menu suspenso ao lado do
+// botão "Depurar/Executar" no topo do editor, e clique em "Executar".
+// O erro (se houver) aparece direto aqui no editor, sem precisar do
+// Cloud Logging. Troque o e-mail abaixo pelo seu antes de rodar.
+function testEnvioManual() {
+  sendEbookEmail("guibaand@gmail.com", "Teste Manual");
+  Logger.log("testEnvioManual: terminou sem lançar erro.");
+}
+
 function doPost(e) {
   const body = JSON.parse(e.postData.contents);
 
