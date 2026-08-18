@@ -351,14 +351,14 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;creditCheckoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;http://link.infinitepay.io/pedro-lucas-u7e/VC1DLUMtSQ-tCEBNagaxO-44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
-const CREDIT_CHECKOUT_URL = "http://link.infinitepay.io/pedro-lucas-u7e/VC1DLUMtSQ-tCEBNagaxO-44,90";
+<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;creditCheckoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://link.infinitepay.io/construindoaproxgeracao/VC1DLUMtSQ-WdUeJecIKJ-44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
+const CREDIT_CHECKOUT_URL = "https://link.infinitepay.io/construindoaproxgeracao/VC1DLUMtSQ-WdUeJecIKJ-44,90";
 const PIX_COPY_CODE = "00020126360014br.gov.bcb.pix0114+5584998130710520400005303986540544.905802BR5925PEDRO LUCAS CAMPOS LACAVA6005NATAL62070503***6304157F";
 const PIX_KEY_DISPLAY = "+55 (84) 99813-0710";
 const PIX_RECEIVER_NAME = "Pedro Lucas Campos Lacava";
 const PIX_QR_IMAGE = "assets/pix-qr.png";
 const PIX_WHATSAPP = "558496830709";
-const SHEETS_WEBHOOK_URL = ""; // TODO: cole aqui a URL do Google Apps Script (Web App) para registrar os leads na planilha
+const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyTiFhYnmY94J6EvpS8lKUVs8qemxsCxy8_VS3oaOTaDQhAfupMYEEeZT3H1SWfQ68x/exec";
 
 function sendLeadToSheet(payload) {
   if (!SHEETS_WEBHOOK_URL) return;
