@@ -243,11 +243,9 @@
       <div class="bcpg-prevenda-box" style="background:#F4EDDB;color:#111110;border-radius:20px;padding:36px;box-shadow:0 20px 50px rgba(17,17,16,.22)">
         <div style="display:flex;align-items:baseline;gap:10px">
           <span style="font-family:'Anton',sans-serif;font-size:52px;line-height:1">{{ preOrderPrice }}</span>
-          <span style="font-size:16px;font-weight:700;color:#6E6A5E;text-decoration:line-through">{{ fullPrice }}</span>
         </div>
-        <div style="font-size:14px;font-weight:700;color:#6E6A5E;margin-top:4px">ou em até 3x sem juros · retirada presencial em 26.09, A13 · CCVIDEIRA CANDELÁRIA</div>
+        <div style="font-size:14px;font-weight:700;color:#6E6A5E;margin-top:4px">retirada presencial em 26.09, A13 · CCVIDEIRA CANDELÁRIA</div>
         <button onClick="{{ openModal }}" style="width:100%;margin-top:28px;padding:17px;border:none;border-radius:100px;background:#111110;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:16px;font-weight:800;cursor:pointer" style-hover="background:#E43242">{{ ctaLabel }}</button>
-        <div style="margin-top:16px;font-size:13px;color:#6E6A5E;font-weight:600;line-height:1.5">A retirada do livro é presencial, no dia 26 de setembro, no A13 — CCVIDEIRA CANDELÁRIA.</div>
       </div>
     </div>
   </section>
@@ -304,9 +302,10 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Contato</span>
-          <a href="#pre-venda" style="color:#F4EDDB">Instagram</a>
+          <a href="https://www.instagram.com/pedrolacava_/" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">Instagram</a>
+          <a href="https://wa.me/558496830709" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">WhatsApp</a>
           <a href="#pre-venda" style="color:#F4EDDB">E-mail</a>
-          <a href="#pre-venda" style="color:#F4EDDB">Compras em lote</a>
+          <a href="https://wa.me/558496830709" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">Compras em lote</a>
         </div>
       </div>
     </div>
@@ -317,7 +316,7 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;fullPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 79&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;checkoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 44,90&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;checkoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;26.09&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
 class Component extends DCLogic {
   state = {
     openFaq: 0,
@@ -330,7 +329,7 @@ class Component extends DCLogic {
     const faqData = [
       ["Como funciona a retirada do livro?", "A retirada é presencial, no dia 26 de setembro de 2026, no A13 — CCVIDEIRA CANDELÁRIA. Não trabalhamos com envio para este lançamento."],
       ["Para quem é este livro?", "Pais, líderes de jovens e adolescentes, voluntários, discipuladores e qualquer cristão que queira formar a próxima geração — não é um livro só para pastores."],
-      ["Posso comprar em lote para minha igreja?", "Sim. Temos condições especiais a partir de 10 exemplares para igrejas, ministérios e escolas. Fale com a gente pelo formulário."],
+      ["Posso comprar em lote para minha igreja?", "Sim. Temos condições especiais a partir de 10 exemplares para igrejas, ministérios e escolas. Fale com a gente pelo WhatsApp: (84) 9683-0709."],
       ["Como funciona o pagamento na pré-venda?", "Ao preencher seus dados você é direcionado para o checkout. Após a confirmação da compra, você retira seu exemplar no A13 — CCVIDEIRA CANDELÁRIA, no dia 26.09."]
     ];
 
@@ -338,7 +337,6 @@ class Component extends DCLogic {
 
     return {
       preOrderPrice: this.props.preOrderPrice ?? "R$ 44,90",
-      fullPrice: this.props.fullPrice ?? "R$ 79",
       pageCount: this.props.pageCount ?? "212",
       pickupDate: this.props.pickupDate ?? "26.09",
       eventLocation: this.props.eventLocation ?? "A13 · CCVIDEIRA CANDELÁRIA",
@@ -378,9 +376,7 @@ class Component extends DCLogic {
       ],
       bonuses: [
         "E-book bônus: Livre-se da Pornografia",
-        "Guia prático de discipulado em PDF (12 encontros prontos)",
-        "Encontro online ao vivo com Pedro Lacava para leitores da pré-venda",
-        "Capítulo bônus inédito enviado por e-mail antes do lançamento",
+        "Exemplar reservado com prioridade na retirada do dia 26.09",
         "Nome na lista de apoiadores da primeira edição"
       ],
       faqs: faqData.map(([q, a], i) => ({
