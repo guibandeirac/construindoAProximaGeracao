@@ -11,7 +11,7 @@
 // true/false nelas, não texto.
 
 const EBOOK_FILE_ID = ""; // TODO: cole aqui o ID do arquivo PDF do e-book no Google Drive
-const SEND_FROM_ALIAS = ""; // TODO: preencher com o e-mail verificado em "Enviar e-mail como" (opcional)
+const SEND_FROM_ALIAS = "construindoaproximageracao@gmail.com"; // precisa estar verificado em "Enviar e-mail como" na conta dona do script
 
 function doPost(e) {
   const body = JSON.parse(e.postData.contents);
@@ -101,6 +101,13 @@ function buildEbookEmailHtml(name) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seu exemplar está garantido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<style>
+  @media (max-width: 640px) {
+    .bcpg-email-title { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body style="margin:0;padding:0;background-color:#F4EDDB;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F4EDDB;padding:32px 16px;">
@@ -113,7 +120,7 @@ function buildEbookEmailHtml(name) {
             <table role="presentation" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="width:12px;height:28px;background-color:#E43242;border-radius:100px;font-size:0;line-height:0;">&nbsp;</td>
-                <td style="padding-left:12px;font-family:Georgia,'Times New Roman',serif;font-size:16px;font-weight:700;letter-spacing:.04em;line-height:1.2;color:#F4EDDB;">
+                <td style="padding-left:12px;font-family:'Anton',Impact,'Arial Black',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;line-height:1.2;color:#F4EDDB;">
                   CONSTRUINDO<br>
                   <span style="color:#E43242;">A PRÓXIMA GERAÇÃO</span>
                 </td>
@@ -124,17 +131,17 @@ function buildEbookEmailHtml(name) {
 
         <tr>
           <td style="padding:40px 32px 8px;">
-            <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E43242;font-family:Arial,Helvetica,sans-serif;">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E43242;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;">
               Compra confirmada
             </div>
-            <div style="font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:1.1;font-weight:700;text-transform:uppercase;color:#111110;margin-top:12px;">
+            <div class="bcpg-email-title" style="font-family:'Anton',Impact,'Arial Black',sans-serif;font-size:32px;line-height:1.1;font-weight:700;text-transform:uppercase;color:#111110;margin-top:12px;">
               ${greeting}<br>Seu exemplar está garantido.
             </div>
           </td>
         </tr>
 
         <tr>
-          <td style="padding:16px 32px 0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;color:#3A3730;">
+          <td style="padding:16px 32px 0;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;color:#3A3730;">
             Recebemos a confirmação do seu pagamento. Seu exemplar de <strong>Construindo a Próxima Geração</strong>, de Pedro Lacava, está reservado — é só retirar presencialmente no dia <strong>26 de setembro</strong>, no <strong>A13 — CCVIDEIRA CANDELÁRIA</strong>.
           </td>
         </tr>
@@ -144,13 +151,13 @@ function buildEbookEmailHtml(name) {
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F4EDDB;border-radius:16px;">
               <tr>
                 <td style="padding:24px;">
-                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E43242;">
+                  <div style="font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E43242;">
                     Bônus da pré-venda
                   </div>
-                  <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:700;color:#111110;margin-top:8px;text-transform:uppercase;">
+                  <div style="font-family:'Anton',Impact,'Arial Black',sans-serif;font-size:20px;font-weight:700;color:#111110;margin-top:8px;text-transform:uppercase;">
                     E-book: Livre-se da Pornografia
                   </div>
-                  <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#3A3730;margin-top:8px;">
+                  <div style="font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#3A3730;margin-top:8px;">
                     Segue em anexo a este e-mail, em PDF. É seu, de presente, como agradecimento por fazer parte da pré-venda.
                   </div>
                 </td>
@@ -160,20 +167,20 @@ function buildEbookEmailHtml(name) {
         </tr>
 
         <tr>
-          <td style="padding:32px 32px 8px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#6E6A5E;">
+          <td style="padding:32px 32px 8px;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#6E6A5E;">
             Qualquer dúvida sobre a retirada, é só chamar no WhatsApp <strong style="color:#111110;">(84) 9683-0709</strong>.
           </td>
         </tr>
 
         <tr>
-          <td style="padding:8px 32px 32px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#3A3730;">
+          <td style="padding:8px 32px 32px;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#3A3730;">
             Deus abençoe!<br>
             <strong>Pedro Lacava</strong>
           </td>
         </tr>
 
         <tr>
-          <td style="background-color:#111110;padding:20px 32px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:rgba(244,237,219,.6);">
+          <td style="background-color:#111110;padding:20px 32px;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:12px;color:rgba(244,237,219,.6);">
             © 2026 Construindo a Próxima Geração. Todos os direitos reservados.
           </td>
         </tr>
