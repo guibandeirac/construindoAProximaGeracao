@@ -11,7 +11,7 @@
 // true/false nelas, não texto.
 
 const EBOOK_FILE_ID = "1kcBt14Hy-3Iiui9_qWRT_hzRjcGMBZr6"; // E-book Livre da Pornografia.pdf
-const SEND_FROM_ALIAS = "construindoaproximageracao@gmail.com"; // precisa estar verificado em "Enviar e-mail como" na conta dona do script
+const SEND_FROM_ALIAS = ""; // TEMPORARIAMENTE desativado para teste de diagnóstico — depois volta para "construindoaproximageracao@gmail.com"
 
 function doPost(e) {
   const body = JSON.parse(e.postData.contents);
@@ -194,7 +194,12 @@ function buildEbookEmailHtml(name) {
 }
 
 function sendEbookEmail(email, name) {
-  if (!EBOOK_FILE_ID || !email) return; // PDF ainda não configurado
+  if (!EBOOK_FILE_ID || !email) {
+    Logger.log("sendEbookEmail: pulado (EBOOK_FILE_ID ou email ausente). email=" + email);
+    return;
+  }
+
+  Logger.log("sendEbookEmail: iniciando envio para " + email);
 
   const file = DriveApp.getFileById(EBOOK_FILE_ID);
   const options = {
@@ -205,4 +210,6 @@ function sendEbookEmail(email, name) {
   if (SEND_FROM_ALIAS) options.from = SEND_FROM_ALIAS;
 
   GmailApp.sendEmail(email, "Seu exemplar está garantido + e-book bônus", "", options);
+  Logger.log("sendEbookEmail: GmailApp.sendEmail retornou sem erro para " + email + " (from=" + (SEND_FROM_ALIAS || "conta padrão") + ")");
+  Logger.log("Cota restante de e-mail hoje: " + MailApp.getRemainingDailyQuota());
 }
