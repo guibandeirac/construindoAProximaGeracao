@@ -4,7 +4,7 @@
 //
 // Cabeçalhos esperados na linha 1 da planilha (nessa ordem ou em qualquer
 // ordem — a comparação ignora maiúsculas/minúsculas e espaços nas pontas):
-//   Nome | Telefone | Email | Forma de Pagamento | Data | Order NSU | Compra confirmada
+//   Nome | Telefone | Email | Forma de Pagamento | Data | Order NSU | Quantidade | Compra confirmada
 //
 // "Compra confirmada" (e "Livro retirado", se existir) devem ser colunas
 // formatadas como caixa de seleção (checkbox) — o script escreve
@@ -63,6 +63,7 @@ function handleLead(data) {
       case "forma de pagamento": return data.paymentMethod || "";
       case "data": return data.timestamp || "";
       case "order nsu": return data.orderNsu || "";
+      case "quantidade": return data.quantity || 1;
       case "compra confirmada": return false;
       case "livro retirado": return false;
       default: return "";

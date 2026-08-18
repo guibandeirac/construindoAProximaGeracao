@@ -281,6 +281,19 @@
           <input type="tel" placeholder="Telefone (WhatsApp)" value="{{ form.phone }}" onChange="{{ onFormChangePhone }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
           <input type="email" placeholder="Melhor e-mail" value="{{ form.email }}" onChange="{{ onFormChangeEmail }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
         </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:12px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.15)">
+          <div>
+            <div style="font-size:14px;font-weight:700;color:#111110">Quantidade</div>
+            <div style="font-size:12px;color:#6E6A5E">Total: {{ totalPriceLabel }}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <button type="button" onClick="{{ decreaseQty }}" style="width:32px;height:32px;border-radius:100px;border:1.5px solid rgba(17,17,16,.2);background:#fff;color:#111110;font-size:18px;font-weight:800;cursor:pointer;line-height:1">−</button>
+            <span style="font-size:16px;font-weight:800;color:#111110;min-width:16px;text-align:center">{{ quantity }}</span>
+            <button type="button" onClick="{{ increaseQty }}" style="width:32px;height:32px;border-radius:100px;border:1.5px solid rgba(17,17,16,.2);background:#fff;color:#111110;font-size:18px;font-weight:800;cursor:pointer;line-height:1">+</button>
+          </div>
+        </div>
+
         <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
           <div style="margin-top:10px;font-size:13px;color:#E43242;font-weight:700">Preencha nome, telefone e e-mail para continuar.</div>
         </sc-if>
@@ -342,6 +355,10 @@ function generateOrderNsu() {
   return `ord_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 }
 
+function formatCentsToBRL(cents) {
+  return `R$ ${(cents / 100).toFixed(2).replace(".", ",")}`;
+}
+
 function sendLeadToSheet(payload) {
   if (!SHEETS_WEBHOOK_URL) return;
   fetch(SHEETS_WEBHOOK_URL, {
@@ -352,13 +369,13 @@ function sendLeadToSheet(payload) {
   }).catch(() => {});
 }
 
-async function createCheckoutLink({ name, phone, email, orderNsu }) {
+async function createCheckoutLink({ name, phone, email, orderNsu, quantity }) {
   const res = await fetch("https://api.checkout.infinitepay.io/links", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       handle: INFINITEPAY_HANDLE,
-      items: [{ quantity: 1, price: ITEM_PRICE_CENTS, description: ITEM_DESCRIPTION }],
+      items: [{ quantity, price: ITEM_PRICE_CENTS, description: ITEM_DESCRIPTION }],
       order_nsu: orderNsu,
       webhook_url: SHEETS_WEBHOOK_URL,
       redirect_url: `${location.origin}${location.pathname}`,
@@ -378,6 +395,7 @@ class Component extends DCLogic {
     formError: false,
     submitError: false,
     isSubmitting: false,
+    quantity: 1,
     form: { name: "", phone: "", email: "" }
   };
 
@@ -402,7 +420,11 @@ class Component extends DCLogic {
       formError: this.state.formError,
       submitError: this.state.submitError,
       isSubmitting: this.state.isSubmitting,
-      submitLabel: this.state.isSubmitting ? "Gerando pagamento..." : "Continuar para o pagamento",
+      quantity: this.state.quantity,
+      totalPriceLabel: formatCentsToBRL(ITEM_PRICE_CENTS * this.state.quantity),
+      submitLabel: this.state.isSubmitting ? "Gerando pagamento..." : `Continuar para o pagamento — ${formatCentsToBRL(ITEM_PRICE_CENTS * this.state.quantity)}`,
+      decreaseQty: () => this.setState(s => ({ quantity: Math.max(1, s.quantity - 1) })),
+      increaseQty: () => this.setState(s => ({ quantity: Math.min(20, s.quantity + 1) })),
       scrollToLivro: scrollToSection("livro"),
       scrollToConteudo: scrollToSection("conteudo"),
       scrollToAutor: scrollToSection("autor"),
@@ -421,9 +443,10 @@ class Component extends DCLogic {
         }
         this.setState({ isSubmitting: true, submitError: false });
         const orderNsu = generateOrderNsu();
+        const quantity = this.state.quantity;
         try {
-          const checkoutUrl = await createCheckoutLink({ name, phone, email, orderNsu });
-          sendLeadToSheet({ orderNsu, name, phone, email, paymentMethod: "Aguardando pagamento", timestamp: formatTimestamp(new Date()) });
+          const checkoutUrl = await createCheckoutLink({ name, phone, email, orderNsu, quantity });
+          sendLeadToSheet({ orderNsu, name, phone, email, quantity, paymentMethod: "Aguardando pagamento", timestamp: formatTimestamp(new Date()) });
           window.location.href = checkoutUrl;
         } catch (err) {
           this.setState({ isSubmitting: false, submitError: true });
