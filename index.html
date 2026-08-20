@@ -375,11 +375,26 @@ function formatCentsToBRL(cents) {
 
 function sendLeadToSheet(payload) {
   if (!SHEETS_WEBHOOK_URL) return;
+  const body = JSON.stringify(payload);
+
+  // Logo depois desta chamada o navegador sai da página (vai para o checkout
+  // da InfinitePay). Um fetch comum é cancelado nessa situação — o Safari/iOS
+  // é bem mais agressivo nisso que o Chrome no desktop, por isso leads do
+  // iPhone podiam não chegar. sendBeacon existe justamente para isso: o
+  // navegador se compromete a entregar o dado mesmo descarregando a página.
+  if (navigator.sendBeacon) {
+    const blob = new Blob([body], { type: "text/plain;charset=UTF-8" });
+    if (navigator.sendBeacon(SHEETS_WEBHOOK_URL, blob)) return;
+  }
+
+  // Fallback para navegadores sem sendBeacon: keepalive pede ao navegador
+  // para não abortar a requisição durante o unload.
   fetch(SHEETS_WEBHOOK_URL, {
     method: "POST",
     mode: "no-cors",
+    keepalive: true,
     headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify(payload)
+    body
   }).catch(() => {});
 }
 
