@@ -83,8 +83,10 @@ function handlePaymentWebhook(data) {
   if (!orderCol) return; // planilha sem a coluna "Order NSU" — não dá pra casar o pedido
 
   const values = sheet.getDataRange().getValues();
+  let encontrou = false;
   for (let i = 1; i < values.length; i++) {
     if (String(values[i][orderCol - 1]) === String(data.order_nsu)) {
+      encontrou = true;
       const rowNum = i + 1;
 
       // A InfinitePay pode reenviar o webhook do mesmo pedido mais de uma
@@ -104,6 +106,33 @@ function handlePaymentWebhook(data) {
       break;
     }
   }
+
+  // Pagamento aprovado sem lead correspondente na planilha. Antes isso era
+  // ignorado em silêncio — a venda ficava invisível e o e-book nunca era
+  // enviado. Agora registramos uma linha órfã: os dados do comprador (nome,
+  // e-mail) só existem na InfinitePay, então é preciso buscar lá e enviar o
+  // e-book manualmente.
+  if (!encontrou) {
+    const row = headers.map(h => {
+      switch (norm(h)) {
+        case "nome": return "⚠ VER NA INFINITEPAY (pagamento sem lead)";
+        case "forma de pagamento": return data.capture_method === "pix" ? "Pix" : "Cartão de crédito";
+        case "data": return formatNow();
+        case "order nsu": return data.order_nsu || "";
+        case "quantidade": return (data.items && data.items.length) ? data.items[0].quantity : "";
+        case "compra confirmada": return true;
+        case "livro retirado": return false;
+        default: return "";
+      }
+    });
+    sheet.appendRow(row);
+  }
+}
+
+function formatNow() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2, "0");
+  return `${pad(d.getDate())}-${pad(d.getMonth() + 1)}-${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
 function buildEbookEmailHtml(name) {
