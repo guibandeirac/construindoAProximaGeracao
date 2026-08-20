@@ -86,6 +86,12 @@ function handlePaymentWebhook(data) {
   for (let i = 1; i < values.length; i++) {
     if (String(values[i][orderCol - 1]) === String(data.order_nsu)) {
       const rowNum = i + 1;
+
+      // A InfinitePay pode reenviar o webhook do mesmo pedido mais de uma
+      // vez (garantia de entrega). Se essa linha já está confirmada, não
+      // processa de novo — evita mandar o e-mail do e-book repetidamente.
+      if (confirmCol && values[i][confirmCol - 1] === true) return;
+
       if (confirmCol) sheet.getRange(rowNum, confirmCol).setValue(true);
       if (methodCol) {
         sheet.getRange(rowNum, methodCol).setValue(
