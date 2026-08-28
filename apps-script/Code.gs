@@ -213,7 +213,7 @@ function buildEbookEmailHtml(name) {
 
         <tr>
           <td style="padding:32px 32px 8px;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#6E6A5E;">
-            Qualquer dúvida sobre a retirada, é só chamar no WhatsApp <strong style="color:#111110;">(84) 9683-0709</strong>.
+            Qualquer dúvida sobre a retirada, é só <a href="https://wa.me/message/GY64QNYWFG3JB1" style="color:#E43242;font-weight:700;">chamar no WhatsApp</a>.
           </td>
         </tr>
 
