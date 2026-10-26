@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Construindo a Próxima Geração</title>
-<meta name="description" content="Um chamado urgente para todo cristão que ama Jesus e deseja ver crianças, adolescentes e jovens encontrando seu propósito em Cristo.">
+<title>Pedro Lacava — Construindo a Próxima Geração</title>
+<meta name="description" content="Pedro Lacava é autor, discipulador e líder de jovens. Conheça o livro Construindo a Próxima Geração, o canal no YouTube e as redes do Pedro.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Construindo a Próxima Geração">
-<meta property="og:description" content="Um chamado urgente para todo cristão que ama Jesus e deseja ver crianças, adolescentes e jovens encontrando seu propósito em Cristo.">
+<meta property="og:title" content="Pedro Lacava — Construindo a Próxima Geração">
+<meta property="og:description" content="Autor, discipulador e líder de jovens. O livro Construindo a Próxima Geração já está disponível, com envio para todo o Brasil.">
 <meta property="og:url" content="https://www.pedrolacava.com.br/">
 <meta property="og:image" content="https://www.pedrolacava.com.br/livro-mockup-msrkevku-va3x.png">
 <meta property="og:image:width" content="1493">
 <meta property="og:image:height" content="2000">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Construindo a Próxima Geração">
-<meta name="twitter:description" content="Um chamado urgente para todo cristão que ama Jesus e deseja ver crianças, adolescentes e jovens encontrando seu propósito em Cristo.">
+<meta name="twitter:title" content="Pedro Lacava — Construindo a Próxima Geração">
+<meta name="twitter:description" content="Autor, discipulador e líder de jovens. O livro Construindo a Próxima Geração já está disponível, com envio para todo o Brasil.">
 <meta name="twitter:image" content="https://www.pedrolacava.com.br/livro-mockup-msrkevku-va3x.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -40,6 +40,9 @@
   a:hover { color: #111110; }
   * { box-sizing: border-box; }
   img { max-width: 100%; }
+  /* O header é sticky, então sem isto o topo de cada seção some atrás dele
+     quando se chega nela por um link de âncora. */
+  #sobre, #livro, #conteudo, #youtube, #comprar, #contato { scroll-margin-top: 84px; }
   @keyframes bcpg-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* ---- Responsive overrides (mobile-first, override inline styles) ---- */
@@ -47,11 +50,15 @@
     .bcpg-nav { display: none !important; }
     .bcpg-header-cta { padding: 10px 16px !important; font-size: 13px !important; }
     .bcpg-hero { grid-template-columns: 1fr !important; gap: 40px !important; padding: 48px 24px 56px !important; }
-    .bcpg-hero-title { font-size: 52px !important; }
-    .bcpg-hero-img { width: 78% !important; max-width: 340px !important; margin: 0 auto; }
+    .bcpg-hero-title { font-size: 56px !important; }
+    .bcpg-hero-photo { max-width: 340px !important; margin: 0 auto; }
     .bcpg-marquee-text { font-size: 18px !important; gap: 28px !important; }
-    .bcpg-sobre { grid-template-columns: 1fr !important; gap: 32px !important; padding: 64px 24px !important; }
+    .bcpg-sobre-inner { grid-template-columns: 1fr !important; gap: 32px !important; padding: 64px 24px !important; }
     .bcpg-sobre-title { font-size: 34px !important; }
+    .bcpg-sobre-photo { max-width: 360px !important; flex: none !important; aspect-ratio: 3/4 !important; }
+    .bcpg-livro-inner { grid-template-columns: 1fr !important; gap: 40px !important; padding: 64px 24px !important; }
+    .bcpg-livro-img { width: 72% !important; max-width: 300px !important; margin: 0 auto; }
+    .bcpg-livro-title { font-size: 34px !important; }
     .bcpg-cards3 { grid-template-columns: 1fr !important; }
     .bcpg-conteudo-inner { padding: 64px 24px !important; }
     .bcpg-conteudo-title { font-size: 32px !important; }
@@ -61,27 +68,32 @@
     .bcpg-trecho-empty { display: none !important; }
     .bcpg-trecho-title { font-size: 32px !important; }
     .bcpg-quote { font-size: 19px !important; }
-    .bcpg-autor-inner { grid-template-columns: 1fr !important; padding: 64px 24px !important; gap: 32px !important; }
-    .bcpg-autor-photo { max-width: 280px; margin: 0 auto; }
-    .bcpg-autor-title { font-size: 40px !important; }
+    .bcpg-yt-inner { padding: 64px 24px !important; }
+    .bcpg-yt-title { font-size: 34px !important; }
+    .bcpg-yt-grid { grid-template-columns: 1fr !important; }
     .bcpg-final-title { font-size: 24px !important; }
-    .bcpg-prevenda-inner { grid-template-columns: 1fr !important; padding: 64px 24px !important; gap: 32px !important; }
-    .bcpg-prevenda-title { font-size: 36px !important; }
+    .bcpg-comprar-inner { grid-template-columns: 1fr !important; padding: 64px 24px !important; gap: 32px !important; }
+    .bcpg-comprar-title { font-size: 36px !important; }
+    .bcpg-social-inner { padding: 64px 24px !important; }
+    .bcpg-social-title { font-size: 32px !important; }
+    .bcpg-social-grid { grid-template-columns: 1fr !important; }
     .bcpg-faq-section { padding: 64px 24px !important; }
     .bcpg-faq-title { font-size: 30px !important; }
     .bcpg-footer-inner { flex-direction: column !important; gap: 32px !important; }
   }
 
   @media (max-width: 480px) {
-    .bcpg-hero-title { font-size: 38px !important; }
-    .bcpg-hero-stats { gap: 24px !important; }
+    .bcpg-hero-title { font-size: 42px !important; }
     .bcpg-sobre-title { font-size: 28px !important; }
+    .bcpg-livro-title { font-size: 28px !important; }
     .bcpg-conteudo-title { font-size: 26px !important; }
     .bcpg-trecho-title { font-size: 26px !important; }
-    .bcpg-autor-title { font-size: 32px !important; }
-    .bcpg-prevenda-title { font-size: 28px !important; }
+    .bcpg-yt-title { font-size: 28px !important; }
+    .bcpg-comprar-title { font-size: 28px !important; }
+    .bcpg-social-title { font-size: 26px !important; }
     .bcpg-faq-title { font-size: 24px !important; }
-    .bcpg-prevenda-box { padding: 24px !important; }
+    .bcpg-comprar-box { padding: 24px !important; }
+    .bcpg-form-row { grid-template-columns: 1fr !important; }
   }
 </style>
 </helmet>
@@ -92,45 +104,35 @@
     <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:32px">
       <div style="display:flex;align-items:center;gap:12px">
         <div style="width:12px;height:28px;border-radius:100px;background:#E43242"></div>
-        <span style="font-family:'Anton',sans-serif;font-size:18px;letter-spacing:.04em;line-height:1">CONSTRUINDO<br><span style="color:#E43242">A PRÓXIMA GERAÇÃO</span></span>
+        <span style="font-family:'Anton',sans-serif;font-size:18px;letter-spacing:.04em;line-height:1">PEDRO<br><span style="color:#E43242">LACAVA</span></span>
       </div>
       <nav class="bcpg-nav" style="margin-left:auto;display:flex;align-items:center;gap:28px;font-size:14px;font-weight:700">
+        <a href="#sobre" onClick="{{ scrollToSobre }}" style="color:#111110">Sobre</a>
         <a href="#livro" onClick="{{ scrollToLivro }}" style="color:#111110">O livro</a>
-        <a href="#conteudo" onClick="{{ scrollToConteudo }}" style="color:#111110">Conteúdo</a>
-        <a href="#autor" onClick="{{ scrollToAutor }}" style="color:#111110">Autor</a>
-        <a href="#pre-venda" onClick="{{ scrollToPreVenda }}" style="color:#111110">Pré-venda</a>
+        <a href="#youtube" onClick="{{ scrollToYoutube }}" style="color:#111110">YouTube</a>
+        <a href="#contato" onClick="{{ scrollToContato }}" style="color:#111110">Contato</a>
       </nav>
-      <button class="bcpg-header-cta" onClick="{{ openModal }}" style="margin-left:auto;background:#E43242;color:#F4EDDB;padding:12px 22px;border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.02em;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;white-space:nowrap" style-hover="background:#111110;color:#F4EDDB">Garantir meu exemplar</button>
+      <button class="bcpg-header-cta" onClick="{{ openModal }}" style="margin-left:auto;background:#E43242;color:#F4EDDB;padding:12px 22px;border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.02em;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;white-space:nowrap" style-hover="background:#111110;color:#F4EDDB">{{ ctaLabel }}</button>
     </div>
   </header>
 
   <section class="bcpg-hero" style="max-width:1180px;margin:0 auto;padding:72px 32px 88px;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center">
     <div>
       <div style="display:inline-flex;align-items:center;gap:10px;background:#111110;color:#F4EDDB;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">
-        <span style="width:8px;height:8px;border-radius:50%;background:#F2841F"></span>Pré-venda aberta
+        <span style="width:8px;height:8px;border-radius:50%;background:#F2841F"></span>Autor · discipulador
       </div>
-      <h1 class="bcpg-hero-title" style="font-family:'Anton',sans-serif;font-size:78px;line-height:.92;letter-spacing:.005em;margin:24px 0 0;text-transform:uppercase">Construindo<br>a próxima<br><span style="color:#E43242">geração</span></h1>
-      <p style="font-size:19px;line-height:1.6;color:#3A3730;max-width:520px;margin:24px 0 0;text-wrap:pretty">Um chamado urgente para todo cristão que ama Jesus e deseja ver crianças, adolescentes e jovens encontrando seu propósito em Cristo.</p>
+      <h1 class="bcpg-hero-title" style="font-family:'Anton',sans-serif;font-size:78px;line-height:.92;letter-spacing:.005em;margin:24px 0 0;text-transform:uppercase">Pedro<br><span style="color:#E43242">Lacava</span></h1>
+      <p style="font-size:19px;line-height:1.6;color:#3A3730;max-width:540px;margin:24px 0 0;text-wrap:pretty">Discipulo jovens e adolescentes na CCVideira, escrevo e falo sobre uma só coisa: construir a próxima geração de líderes para a Igreja de Cristo.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center">
-        <button onClick="{{ openModal }}" style="background:#E43242;color:#F4EDDB;padding:18px 34px;border-radius:100px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="background:#111110">Entrar na pré-venda</button>
-        <a href="#livro" onClick="{{ scrollToLivro }}" style="border:1.5px solid rgba(17,17,16,.25);color:#111110;padding:17px 30px;border-radius:100px;font-size:16px;font-weight:700" style-hover="border-color:#111110;background:rgba(17,17,16,.05)">Ler um trecho</a>
-      </div>
-      <div class="bcpg-hero-stats" style="display:flex;flex-wrap:wrap;gap:40px;margin-top:44px;border-top:1px solid rgba(17,17,16,.14);padding-top:24px">
-        <div>
-          <div style="font-family:'Anton',sans-serif;font-size:30px">{{ preOrderPrice }}</div>
-          <div style="font-size:13px;font-weight:700;color:#6E6A5E">na pré-venda</div>
-        </div>
-
-        <div>
-          <div style="font-family:'Anton',sans-serif;font-size:30px">{{ pickupDate }}</div>
-          <div style="font-size:13px;font-weight:700;color:#6E6A5E">{{ eventLocation }}</div>
-        </div>
+        <button onClick="{{ openModal }}" style="background:#E43242;color:#F4EDDB;padding:18px 34px;border-radius:100px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="background:#111110">{{ ctaLabel }}</button>
+        <a href="{{ youtubeUrl }}" target="_blank" rel="noopener noreferrer" style="border:1.5px solid rgba(17,17,16,.25);color:#111110;padding:17px 30px;border-radius:100px;font-size:16px;font-weight:700" style-hover="border-color:#111110;background:rgba(17,17,16,.05)">Ver o canal no YouTube</a>
       </div>
     </div>
     <div style="position:relative;display:flex;justify-content:center;min-width:0">
-
-
-    <img class="bcpg-hero-img" src="./livro-mockup-msrkevku-va3x.png" alt="livro-mockup" width="1792" height="2400" style="max-width: 100%; height: auto; display: block; object-fit: cover; width: 1792px; aspect-ratio: 1792 / 2400"></div>
+      <div class="bcpg-hero-photo" style="width:100%;max-width:420px;aspect-ratio:4/5;border-radius:24px;overflow:hidden;border:1px solid rgba(17,17,16,.14);box-shadow:0 24px 60px rgba(17,17,16,.18)">
+        <img src="assets/autor-pedro-lacava.jpeg" alt="Pedro Lacava" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+    </div>
   </section>
 
   <div style="background:#111110;color:#F4EDDB;padding:22px 0;overflow:hidden;white-space:nowrap">
@@ -140,36 +142,65 @@
     </div>
   </div>
 
-  <section id="livro" class="bcpg-sobre" style="max-width:1180px;margin:0 auto;padding:96px 32px;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start">
-    <div>
-      <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E43242">Sobre o livro</div>
-      <h2 class="bcpg-sobre-title" style="font-family:'Anton',sans-serif;font-size:46px;line-height:1;margin:16px 0 0;text-transform:uppercase">Discipular não é<br>tarefa de alguns.<br><span style="color:#E43242">É missão de todos.</span></h2>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:22px;font-size:18px;line-height:1.7;color:#3A3730">
-      <p style="margin:0;text-wrap:pretty">A próxima geração está no centro de uma batalha espiritual — e Deus está levantando homens e mulheres comuns para viverem o extraordinário.</p>
-      <p style="margin:0;text-wrap:pretty">Aqui você vai descobrir que construir a próxima geração é missão de pais, líderes, voluntários, discipuladores e apaixonados pelo Reino. Com histórias reais, princípios bíblicos e verdades confrontadoras, você será conduzido a compreender seu chamado, fortalecer sua identidade, crescer em obediência e amadurecer como alguém que deixa legado.</p>
-      <div class="bcpg-cards3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px">
-        <div style="background:#FFFDF6;border:1px solid rgba(17,17,16,.14);border-radius:16px;padding:20px">
-          <div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase">Desafiado</div>
-          <div style="font-size:14px;color:#6E6A5E;margin-top:6px;font-weight:600">Se prepare para sair da arquibancada.</div>
+  <section id="sobre" style="background:#111110;color:#F4EDDB">
+    <div class="bcpg-sobre-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px;display:grid;grid-template-columns:.75fr 1.25fr;gap:64px">
+      <div style="display:flex;flex-direction:column">
+        <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#F2841F">Quem sou</div>
+        <h2 class="bcpg-sobre-title" style="font-family:'Anton',sans-serif;font-size:46px;line-height:1;margin:16px 0 0;text-transform:uppercase">Formado por<br>quem caminhou<br><span style="color:#E43242">perto de mim</span></h2>
+        <!-- flex:1 em vez de uma proporção fixa: a foto ocupa exatamente a
+             altura que sobra na coluna, então a base dela termina junto com o
+             fim do texto da bio ao lado. A imagem vai posicionada de forma
+             absoluta porque, em fluxo normal, a altura natural dela entraria
+             na conta da linha do grid e esticaria a seção inteira — era o que
+             fazia a foto sobrar para baixo. No mobile a proporção volta (as
+             colunas viram linhas e não há altura sobrando para esticar). -->
+        <div class="bcpg-sobre-photo" style="margin-top:32px;flex:1;min-height:220px;position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(244,237,219,.18)">
+          <img src="assets/pedro-lacava-ministrando.jpg" alt="Pedro e Ohana Lacava ministrando na CCVideira Candelária" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 58%;display:block">
         </div>
-        <div style="background:#FFFDF6;border:1px solid rgba(17,17,16,.14);border-radius:16px;padding:20px">
-          <div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase">Transformado</div>
-          <div style="font-size:14px;color:#6E6A5E;margin-top:6px;font-weight:600">Identidade antes de função.</div>
-        </div>
-        <div style="background:#111110;color:#F4EDDB;border-radius:16px;padding:20px">
-          <div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;color:#F2841F">Enviado</div>
-          <div style="font-size:14px;opacity:.75;margin-top:6px;font-weight:600">Amar a próxima geração como Jesus ama.</div>
-        </div>
+      </div>
+      <div style="font-size:19px;line-height:1.7;opacity:.86;max-width:640px;margin:0;text-wrap:pretty">
+        <div>Encontrei Jesus e fui salvo aos 17 anos, no ministério de jovens e adolescentes da minha igreja local, a CCVideira. Pastoreado pelo Pr. Thiago Coelho e pela Pra. Anna Coelho, sirvo integralmente à minha comunidade, dedicando minha vida ao avanço do Reino de Deus e à construção da próxima geração.</div>
+        <div><br></div>
+        <div>Apaixonado por Jesus, passei por um longo processo de curas e transformações e, a partir dessas experiências, assumi o compromisso de construir e preparar a próxima geração de líderes para a Igreja de Cristo aqui na terra.</div>
+        <div><br></div>
+        <div>Casado com Ohana Lacava e pai de Tito, dedico minha vida a discipular jovens adultos e adolescentes, caminhando de perto com a próxima geração e despertando nela uma paixão genuína por Deus e por Sua missão aqui na terra. Hoje, além de servir integralmente na CCVideira, permaneço comprometido em viver minha fé de forma prática, servindo à igreja de Jesus e investindo naqueles que Deus tem colocado no meu caminho.</div>
       </div>
     </div>
   </section>
 
-  <section style="background:#111110;color:#F4EDDB;padding:56px 32px;text-align:center">
-    <div style="max-width:640px;margin:0 auto">
-      <div style="font-family:'Anton',sans-serif;font-size:30px;line-height:1.1;text-transform:uppercase">Garanta seu exemplar por {{ preOrderPrice }}</div>
-      <p style="font-size:16px;opacity:.75;margin:12px 0 0">Retirada presencial no dia 10.10, A13 · CCVIDEIRA CANDELÁRIA.</p>
-      <button onClick="{{ openModal }}" style="margin-top:24px;background:#E43242;color:#F4EDDB;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="background:#F4EDDB;color:#111110">{{ ctaLabel }}</button>
+  <section id="livro">
+    <div class="bcpg-livro-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px;display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center">
+      <div style="display:flex;justify-content:center;min-width:0">
+        <img class="bcpg-livro-img" src="./livro-mockup-msrkevku-va3x.png" alt="Livro Construindo a Próxima Geração" width="1792" height="2400" style="max-width:100%;height:auto;display:block;object-fit:cover;width:1792px;aspect-ratio:1792 / 2400">
+      </div>
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;background:#111110;color:#F4EDDB;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">
+          <span style="width:8px;height:8px;border-radius:50%;background:#F2841F"></span>Já disponível · {{ shippingLabel }}
+        </div>
+        <h2 class="bcpg-livro-title" style="font-family:'Anton',sans-serif;font-size:46px;line-height:1;margin:20px 0 0;text-transform:uppercase">Construindo a<br><span style="color:#E43242">próxima geração</span></h2>
+        <div style="display:flex;flex-direction:column;gap:22px;font-size:18px;line-height:1.7;color:#3A3730;margin-top:24px">
+          <p style="margin:0;text-wrap:pretty">Um chamado urgente para todo cristão que ama Jesus e deseja ver crianças, adolescentes e jovens encontrando seu propósito em Cristo. A próxima geração está no centro de uma batalha espiritual — e Deus está levantando pessoas comuns para viverem o extraordinário.</p>
+          <p style="margin:0;text-wrap:pretty">Com histórias reais, princípios bíblicos e verdades confrontadoras, você será conduzido a compreender seu chamado, fortalecer sua identidade, crescer em obediência e amadurecer como alguém que deixa legado. Discipular não é tarefa de alguns: é missão de todos.</p>
+        </div>
+        <div class="bcpg-cards3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px">
+          <div style="background:#FFFDF6;border:1px solid rgba(17,17,16,.14);border-radius:16px;padding:20px">
+            <div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase">Desafiado</div>
+            <div style="font-size:14px;color:#6E6A5E;margin-top:6px;font-weight:600">Se prepare para sair da arquibancada.</div>
+          </div>
+          <div style="background:#FFFDF6;border:1px solid rgba(17,17,16,.14);border-radius:16px;padding:20px">
+            <div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase">Transformado</div>
+            <div style="font-size:14px;color:#6E6A5E;margin-top:6px;font-weight:600">Identidade antes de função.</div>
+          </div>
+          <div style="background:#111110;color:#F4EDDB;border-radius:16px;padding:20px">
+            <div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;color:#F2841F">Enviado</div>
+            <div style="font-size:14px;opacity:.75;margin-top:6px;font-weight:600">Amar a próxima geração como Jesus ama.</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center">
+          <button onClick="{{ openModal }}" style="background:#E43242;color:#F4EDDB;padding:17px 32px;border-radius:100px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="background:#111110">{{ ctaLabel }} — {{ bookPrice }}</button>
+          <span style="font-size:14px;font-weight:700;color:#6E6A5E">{{ pageCount }} páginas · prefácio de Thiago Coelho</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -216,38 +247,56 @@
     </div>
   </section>
 
-  <section id="autor" style="background:#111110;color:#F4EDDB">
-    <div class="bcpg-autor-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px;display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center">
-      <div class="bcpg-autor-photo" style="aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid rgba(244,237,219,.18)">
-        <img src="assets/autor-pedro-lacava.jpeg" alt="Pedro Lacava" style="width:100%;height:100%;object-fit:cover;display:block">
-      </div>
-      <div>
-        <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#F2841F">O autor</div>
-        <h2 class="bcpg-autor-title" style="font-family:'Anton',sans-serif;font-size:56px;line-height:.98;margin:16px 0 24px;text-transform:uppercase">Pedro<br>Lacava</h2>
-        <div style="font-size:19px;line-height:1.7;opacity:.86;max-width:560px;margin:0;text-wrap:pretty"><div>Pedro Lacava encontrou Jesus e foi salvo aos 17 anos, no ministério de jovens e adolescentes de sua igreja local, a CCVideira. Pastoreado pelo Pr. Thiago Coelho e pela Pra. Anna Coelho, serve integralmente a sua comunidade local, dedicando sua vida ao avanço do Reino de Deus e à construção da próxima geração.</div><div><br></div><div>Apaixonado por Jesus, Pedro passou por um longo processo de curas e transformações e, a partir dessas experiências, assumiu o compromisso de construir e preparar a próxima geração de líderes para a Igreja de Cristo aqui na terra.</div><div><br></div><div>Casado com Ohana Lacava e pai de Tito, Pedro dedica sua vida a discipular jovens adultos e adolescentes, caminhando de perto com a próxima geração e despertando nela uma paixão genuína por Deus e por Sua missão aqui na terra. Hoje, além de servir integralmente na CCVideira, permanece comprometido em viver sua fé de forma prática, servindo à igreja de Jesus e investindo naqueles que Deus tem colocado em seu caminho.</div></div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
-          <span style="border:1px solid rgba(244,237,219,.3);border-radius:100px;padding:10px 18px;font-size:14px;font-weight:700">Discipulado</span>
-          <span style="border:1px solid rgba(244,237,219,.3);border-radius:100px;padding:10px 18px;font-size:14px;font-weight:700">Ministério de jovens</span>
-          <span style="border:1px solid rgba(244,237,219,.3);border-radius:100px;padding:10px 18px;font-size:14px;font-weight:700">Prefácio: Thiago Coelho</span>
+  <section id="youtube" style="background:#111110;color:#F4EDDB">
+    <div class="bcpg-yt-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#F2841F">No YouTube</div>
+          <h2 class="bcpg-yt-title" style="font-family:'Anton',sans-serif;font-size:46px;line-height:1;margin:16px 0 0;text-transform:uppercase">Mensagens que<br><span style="color:#E43242">formam e confrontam</span></h2>
         </div>
+        <p style="max-width:360px;font-size:16px;line-height:1.6;opacity:.7;margin:0;font-weight:600">Pregações, conversas sobre liderança e a série <strong>Construindo a Próxima Geração</strong> — que deu origem ao livro.</p>
+      </div>
+
+      <div class="bcpg-yt-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px">
+        <sc-for list="{{ videos }}" as="v" hint-placeholder-count="6">
+          <a href="{{ v.url }}" target="_blank" rel="noopener noreferrer" style="display:flex;flex-direction:column;background:rgba(244,237,219,.06);border:1px solid rgba(244,237,219,.16);border-radius:16px;overflow:hidden;color:#F4EDDB" style-hover="border-color:#E43242;background:rgba(244,237,219,.1)">
+            <div style="position:relative;aspect-ratio:16/9;background:#000">
+              <img src="{{ v.thumb }}" alt="{{ v.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                <div style="width:56px;height:40px;border-radius:10px;background:#E43242;display:flex;align-items:center;justify-content:center">
+                  <div style="width:0;height:0;border-left:14px solid #F4EDDB;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#F2841F">{{ v.tag }}</div>
+              <div style="font-family:'Anton',sans-serif;font-size:20px;line-height:1.15;text-transform:uppercase">{{ v.title }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:44px;align-items:center">
+        <a href="{{ youtubeUrl }}" target="_blank" rel="noopener noreferrer" style="background:#E43242;color:#F4EDDB;padding:17px 32px;border-radius:100px;font-size:16px;font-weight:800;font-family:'Nunito Sans',sans-serif" style-hover="background:#F4EDDB;color:#111110">Inscrever-se no canal</a>
+        <span style="font-size:14px;font-weight:700;opacity:.6">youtube.com/@pedrolacava_</span>
       </div>
     </div>
   </section>
 
   <section style="max-width:1180px;margin:0 auto;padding:56px 32px;text-align:center">
-    <div class="bcpg-final-title" style="font-family:'Anton',sans-serif;font-size:30px;line-height:1.1;text-transform:uppercase;color:#111110">Ainda não garantiu o seu?</div>
-    <p style="font-size:16px;color:#6E6A5E;margin:12px 0 0">{{ preOrderPrice }} · retirada no dia 10.10, A13 · CCVIDEIRA CANDELÁRIA</p>
+    <div class="bcpg-final-title" style="font-family:'Anton',sans-serif;font-size:30px;line-height:1.1;text-transform:uppercase;color:#111110">Ainda não tem o seu exemplar?</div>
+    <p style="font-size:16px;color:#6E6A5E;margin:12px 0 0">{{ bookPrice }} · {{ shippingLabel }}</p>
     <button onClick="{{ openModal }}" style="margin-top:24px;background:#111110;color:#F4EDDB;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito Sans',sans-serif" style-hover="background:#E43242">{{ ctaLabel }}</button>
   </section>
 
-  <section id="pre-venda" style="background:#E43242;color:#F4EDDB">
-    <div class="bcpg-prevenda-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center">
+  <section id="comprar" style="background:#E43242;color:#F4EDDB">
+    <div class="bcpg-comprar-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center">
       <div>
-        <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85">Pré-venda</div>
-        <h2 class="bcpg-prevenda-title" style="font-family:'Anton',sans-serif;font-size:52px;line-height:.98;margin:16px 0 20px;text-transform:uppercase">Garanta seu exemplar<br>antes do lançamento</h2>
-        <p style="font-size:18px;line-height:1.7;opacity:.9;max-width:520px;margin:0">Quem entra na pré-venda garante o exemplar com preço de lançamento e os bônus abaixo. A retirada é presencial, no dia 10.10, no A13 — CCVIDEIRA CANDELÁRIA.</p>
+        <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85">Peça o seu</div>
+        <h2 class="bcpg-comprar-title" style="font-family:'Anton',sans-serif;font-size:52px;line-height:.98;margin:16px 0 20px;text-transform:uppercase">O livro já está<br>na sua mão</h2>
+        <p style="font-size:18px;line-height:1.7;opacity:.9;max-width:520px;margin:0">Lançado e com envio para todo o Brasil. Você preenche seus dados e o endereço de entrega, paga com Pix ou cartão e recebe o exemplar em casa.</p>
         <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
-          <sc-for list="{{ bonuses }}" as="b" hint-placeholder-count="5">
+          <sc-for list="{{ bonuses }}" as="b" hint-placeholder-count="4">
             <div style="display:flex;gap:14px;align-items:start">
               <span style="width:22px;height:22px;border-radius:50%;background:#111110;color:#F4EDDB;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:none;margin-top:2px">✓</span>
               <span style="font-size:17px;line-height:1.5;font-weight:600">{{ b }}</span>
@@ -255,12 +304,32 @@
           </sc-for>
         </div>
       </div>
-      <div class="bcpg-prevenda-box" style="background:#F4EDDB;color:#111110;border-radius:20px;padding:36px;box-shadow:0 20px 50px rgba(17,17,16,.22)">
+      <div class="bcpg-comprar-box" style="background:#F4EDDB;color:#111110;border-radius:20px;padding:36px;box-shadow:0 20px 50px rgba(17,17,16,.22)">
         <div style="display:flex;align-items:baseline;gap:10px">
-          <span style="font-family:'Anton',sans-serif;font-size:52px;line-height:1">{{ preOrderPrice }}</span>
+          <span style="font-family:'Anton',sans-serif;font-size:52px;line-height:1">{{ bookPrice }}</span>
         </div>
-        <div style="font-size:14px;font-weight:700;color:#6E6A5E;margin-top:4px">retirada presencial no dia 10.10, A13 · CCVIDEIRA CANDELÁRIA</div>
+        <div style="font-size:14px;font-weight:700;color:#6E6A5E;margin-top:4px">{{ shippingLabel }} · Pix ou cartão em até 12x</div>
         <button onClick="{{ openModal }}" style="width:100%;margin-top:28px;padding:17px;border:none;border-radius:100px;background:#111110;color:#F4EDDB;font-family:'Nunito Sans',sans-serif;font-size:16px;font-weight:800;cursor:pointer" style-hover="background:#E43242">{{ ctaLabel }}</button>
+        <div style="font-size:13px;color:#6E6A5E;margin-top:14px;line-height:1.5;text-align:center">O valor do frete é combinado com você pelo WhatsApp depois da compra, de acordo com o seu CEP.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="background:#FFFDF6;border-top:1px solid rgba(17,17,16,.12);border-bottom:1px solid rgba(17,17,16,.12)">
+    <div class="bcpg-social-inner" style="max-width:1180px;margin:0 auto;padding:96px 32px">
+      <div style="text-align:center;max-width:620px;margin:0 auto">
+        <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E43242">Onde me encontrar</div>
+        <h2 class="bcpg-social-title" style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;margin:16px 0 0;text-transform:uppercase">Vamos conversar</h2>
+        <p style="font-size:17px;line-height:1.6;color:#6E6A5E;margin:16px 0 0;font-weight:600">Acompanhe o dia a dia, assista às mensagens ou fale comigo direto no WhatsApp.</p>
+      </div>
+      <div class="bcpg-social-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px">
+        <sc-for list="{{ socials }}" as="s" hint-placeholder-count="3">
+          <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="background:#F4EDDB;border:1px solid rgba(17,17,16,.14);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px;color:#111110;min-height:170px" style-hover="border-color:#111110;background:#111110;color:#F4EDDB">
+            <div style="font-family:'Anton',sans-serif;font-size:15px;color:#E43242;letter-spacing:.1em;text-transform:uppercase">{{ s.name }}</div>
+            <div style="font-family:'Anton',sans-serif;font-size:24px;line-height:1.1;text-transform:uppercase">{{ s.handle }}</div>
+            <div style="font-size:15px;line-height:1.6;opacity:.75;margin-top:auto">{{ s.text }}</div>
+          </a>
+        </sc-for>
       </div>
     </div>
   </section>
@@ -283,17 +352,28 @@
   </section>
 
   <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeModal }}" style="position:fixed;inset:0;background:rgba(17,17,16,.65);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;box-sizing:border-box">
-      <div onClick="{{ stopClick }}" style="background:#FFFDF6;color:#111110;border-radius:20px;padding:36px;max-width:440px;width:100%;position:relative;box-shadow:0 24px 60px rgba(17,17,16,.3)">
+    <div onClick="{{ closeModal }}" style="position:fixed;inset:0;background:rgba(17,17,16,.65);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;box-sizing:border-box;overflow-y:auto">
+      <div onClick="{{ stopClick }}" style="background:#FFFDF6;color:#111110;border-radius:20px;padding:36px;max-width:480px;width:100%;position:relative;box-shadow:0 24px 60px rgba(17,17,16,.3);margin:auto">
         <button onClick="{{ closeModal }}" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#6E6A5E;line-height:1">✕</button>
-        <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#E43242">Garantir exemplar</div>
+        <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#E43242">Comprar o livro</div>
 
-        <h3 style="font-family:'Anton',sans-serif;font-size:26px;line-height:1.05;margin:12px 0 6px;text-transform:uppercase">Seus dados para o checkout</h3>
-        <p style="font-size:14px;color:#6E6A5E;margin:0 0 20px;line-height:1.5">Preencha para continuar para o pagamento (Pix ou cartão) na InfinitePay.</p>
+        <h3 style="font-family:'Anton',sans-serif;font-size:26px;line-height:1.05;margin:12px 0 6px;text-transform:uppercase">Seus dados e endereço</h3>
+        <p style="font-size:14px;color:#6E6A5E;margin:0 0 20px;line-height:1.5">Enviamos para todo o Brasil. Preencha para continuar para o pagamento (Pix ou cartão) na InfinitePay.</p>
         <div style="display:flex;flex-direction:column;gap:10px">
           <input type="text" placeholder="Nome completo" value="{{ form.name }}" onChange="{{ onFormChangeName }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
           <input type="tel" placeholder="Telefone (WhatsApp)" value="{{ form.phone }}" onChange="{{ onFormChangePhone }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
           <input type="email" placeholder="Melhor e-mail" value="{{ form.email }}" onChange="{{ onFormChangeEmail }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+        </div>
+
+        <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6E6A5E;margin:20px 0 10px">Endereço de entrega</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <input type="text" placeholder="CEP" value="{{ form.cep }}" onChange="{{ onFormChangeCep }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+          <input type="text" placeholder="Rua, número e bairro" value="{{ form.address }}" onChange="{{ onFormChangeAddress }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+          <input type="text" placeholder="Complemento (opcional)" value="{{ form.complement }}" onChange="{{ onFormChangeComplement }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+          <div class="bcpg-form-row" style="display:grid;grid-template-columns:1.6fr .4fr;gap:10px">
+            <input type="text" placeholder="Cidade" value="{{ form.city }}" onChange="{{ onFormChangeCity }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+            <input type="text" placeholder="UF" value="{{ form.state }}" onChange="{{ onFormChangeState }}" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.2);font-family:'Nunito Sans',sans-serif;font-size:15px;background:#fff;color:#111110;outline:none">
+          </div>
         </div>
 
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:12px 16px;border-radius:12px;border:1.5px solid rgba(17,17,16,.15)">
@@ -308,8 +388,10 @@
           </div>
         </div>
 
+        <div style="font-size:12px;color:#6E6A5E;margin-top:10px;line-height:1.5">O frete não está incluso neste valor — combinamos com você pelo WhatsApp depois da compra.</div>
+
         <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
-          <div style="margin-top:10px;font-size:13px;color:#E43242;font-weight:700">Preencha nome, telefone e e-mail para continuar.</div>
+          <div style="margin-top:10px;font-size:13px;color:#E43242;font-weight:700">Preencha seus dados e o endereço completo para continuar.</div>
         </sc-if>
         <sc-if value="{{ submitError }}" hint-placeholder-val="{{ false }}">
           <div style="margin-top:10px;font-size:13px;color:#E43242;font-weight:700">Não foi possível gerar o pagamento agora. Tente novamente em instantes.</div>
@@ -322,34 +404,36 @@
   <footer style="background:#111110;color:#F4EDDB">
     <div class="bcpg-footer-inner" style="max-width:1180px;margin:0 auto;padding:64px 32px 40px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:start">
       <div style="max-width:380px">
-        <div style="font-family:'Anton',sans-serif;font-size:24px;line-height:1.1;text-transform:uppercase">Construindo<br><span style="color:#E43242">a próxima geração</span></div>
-        <p style="font-size:15px;line-height:1.6;opacity:.7;margin:16px 0 0">Pedro Lacava · Prefácio de Thiago Coelho</p>
+        <div style="font-family:'Anton',sans-serif;font-size:24px;line-height:1.1;text-transform:uppercase">Pedro<br><span style="color:#E43242">Lacava</span></div>
+        <p style="font-size:15px;line-height:1.6;opacity:.7;margin:16px 0 0">Autor de <em>Construindo a Próxima Geração</em> · Prefácio de Thiago Coelho</p>
       </div>
       <div style="display:flex;gap:56px;flex-wrap:wrap;font-size:15px">
         <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Livro</span>
-          <a href="#livro" onClick="{{ scrollToLivro }}" style="color:#F4EDDB">Sobre</a>
-          <a href="#conteudo" onClick="{{ scrollToConteudo }}" style="color:#F4EDDB">Conteúdo</a>
-          <a href="#pre-venda" onClick="{{ scrollToPreVenda }}" style="color:#F4EDDB">Pré-venda</a>
+          <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Navegar</span>
+          <a href="#sobre" onClick="{{ scrollToSobre }}" style="color:#F4EDDB">Sobre</a>
+          <a href="#livro" onClick="{{ scrollToLivro }}" style="color:#F4EDDB">O livro</a>
+          <a href="#youtube" onClick="{{ scrollToYoutube }}" style="color:#F4EDDB">YouTube</a>
+          <a href="#comprar" onClick="{{ scrollToComprar }}" style="color:#F4EDDB">Comprar</a>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <span style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.5">Contato</span>
           <a href="https://www.instagram.com/pedrolacava_/" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">Instagram</a>
+          <a href="https://www.youtube.com/@pedrolacava_" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">YouTube</a>
           <a href="https://wa.me/message/GY64QNYWFG3JB1" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">WhatsApp</a>
           <a href="https://wa.me/message/GY64QNYWFG3JB1" target="_blank" rel="noopener noreferrer" style="color:#F4EDDB">Compras em lote</a>
         </div>
       </div>
     </div>
     <div style="border-top:1px solid rgba(244,237,219,.15)">
-      <div style="max-width:1180px;margin:0 auto;padding:20px 32px;font-size:13px;opacity:.6">© 2026 Construindo a Próxima Geração. Todos os direitos reservados.</div>
+      <div style="max-width:1180px;margin:0 auto;padding:20px 32px;font-size:13px;opacity:.6">© 2026 Pedro Lacava. Todos os direitos reservados.</div>
     </div>
   </footer>
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;preOrderPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 50,00&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Garantir meu exemplar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;pickupDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;10.10&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;eventLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;A13 · CCVIDEIRA CANDELÁRIA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;bookPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 50,00&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Comprar o livro&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;shippingLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Envio para todo o Brasil&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;pageCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;212&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Livro&quot;},&quot;youtubeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.youtube.com/@pedrolacava_&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;},&quot;instagramUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/pedrolacava_/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;},&quot;whatsappUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://wa.me/message/GY64QNYWFG3JB1&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;}}">
 const INFINITEPAY_HANDLE = "construindoaproxgeracao";
-const ITEM_DESCRIPTION = "Construindo a Proxima Geracao - Pre-venda";
+const ITEM_DESCRIPTION = "Construindo a Proxima Geracao - Livro";
 const ITEM_PRICE_CENTS = 5000;
 const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyTiFhYnmY94J6EvpS8lKUVs8qemxsCxy8_VS3oaOTaDQhAfupMYEEeZT3H1SWfQ68x/exec";
 
@@ -425,25 +509,28 @@ class Component extends DCLogic {
     submitError: false,
     isSubmitting: false,
     quantity: 1,
-    form: { name: "", phone: "", email: "" }
+    form: { name: "", phone: "", email: "", cep: "", address: "", complement: "", city: "", state: "" }
   };
 
   renderVals() {
+    const whatsappUrl = this.props.whatsappUrl ?? "https://wa.me/message/GY64QNYWFG3JB1";
+
     const faqData = [
-      ["Como funciona a retirada do livro?", "A retirada é presencial, no dia 10 de outubro de 2026, no A13 — CCVIDEIRA CANDELÁRIA. Não trabalhamos com envio para este lançamento."],
+      ["Como funciona o envio?", "O livro já foi lançado e enviamos para todo o Brasil. Você informa o endereço de entrega no formulário de compra e, assim que o pagamento é confirmado, entramos em contato pelo WhatsApp com o prazo e o código de rastreio."],
+      ["Quanto custa o frete?", `O valor do frete não está incluso no preço do livro: ele depende do seu CEP e é combinado com você pelo WhatsApp depois da compra confirmada. Qualquer dúvida antes de comprar, chame em ${whatsappUrl}`],
       ["Para quem é este livro?", "Pais, líderes de jovens e adolescentes, voluntários, discipuladores e qualquer cristão que queira formar a próxima geração — não é um livro só para pastores."],
-      ["Posso comprar em lote para minha igreja?", "Sim. Temos condições especiais a partir de 10 exemplares para igrejas, ministérios e escolas. Fale com a gente pelo WhatsApp: wa.me/message/GY64QNYWFG3JB1"],
-      ["Como funciona o pagamento na pré-venda?", "Depois de preencher seus dados, você é direcionado para o checkout da InfinitePay, onde escolhe entre Pix ou cartão de crédito (em até 12x). Após a confirmação da compra, você retira seu exemplar no A13 — CCVIDEIRA CANDELÁRIA, no dia 10.10."]
+      ["Posso comprar em lote para minha igreja?", `Sim. Temos condições especiais a partir de 10 exemplares para igrejas, ministérios e escolas. Fale com a gente pelo WhatsApp: ${whatsappUrl}`],
+      ["Como funciona o pagamento?", "Depois de preencher seus dados e o endereço, você é direcionado para o checkout da InfinitePay, onde escolhe entre Pix ou cartão de crédito (em até 12x). Com a compra confirmada, você recebe o e-book bônus por e-mail e combinamos o envio do exemplar."]
     ];
 
     const setField = field => e => this.setState(s => ({ form: { ...s.form, [field]: e.target.value } }));
 
     return {
-      preOrderPrice: this.props.preOrderPrice ?? "R$ 50,00",
+      bookPrice: this.props.bookPrice ?? "R$ 50,00",
       pageCount: this.props.pageCount ?? "212",
-      pickupDate: this.props.pickupDate ?? "10.10",
-      eventLocation: this.props.eventLocation ?? "A13 · CCVIDEIRA CANDELÁRIA",
-      ctaLabel: this.props.ctaLabel ?? "Garantir meu exemplar",
+      shippingLabel: this.props.shippingLabel ?? "Envio para todo o Brasil",
+      ctaLabel: this.props.ctaLabel ?? "Comprar o livro",
+      youtubeUrl: this.props.youtubeUrl ?? "https://www.youtube.com/@pedrolacava_",
       modalOpen: this.state.modalOpen,
       form: this.state.form,
       formError: this.state.formError,
@@ -454,19 +541,27 @@ class Component extends DCLogic {
       submitLabel: this.state.isSubmitting ? "Gerando pagamento..." : `Continuar para o pagamento — ${formatCentsToBRL(ITEM_PRICE_CENTS * this.state.quantity)}`,
       decreaseQty: () => this.setState(s => ({ quantity: Math.max(1, s.quantity - 1) })),
       increaseQty: () => this.setState(s => ({ quantity: Math.min(20, s.quantity + 1) })),
+      scrollToSobre: scrollToSection("sobre"),
       scrollToLivro: scrollToSection("livro"),
-      scrollToConteudo: scrollToSection("conteudo"),
-      scrollToAutor: scrollToSection("autor"),
-      scrollToPreVenda: scrollToSection("pre-venda"),
+      scrollToYoutube: scrollToSection("youtube"),
+      scrollToComprar: scrollToSection("comprar"),
+      scrollToContato: scrollToSection("contato"),
       openModal: () => this.setState({ modalOpen: true, formError: false, submitError: false }),
       closeModal: () => this.setState({ modalOpen: false }),
       stopClick: e => e.stopPropagation(),
       onFormChangeName: setField("name"),
       onFormChangePhone: setField("phone"),
       onFormChangeEmail: setField("email"),
+      onFormChangeCep: setField("cep"),
+      onFormChangeAddress: setField("address"),
+      onFormChangeComplement: setField("complement"),
+      onFormChangeCity: setField("city"),
+      onFormChangeState: setField("state"),
       onFormSubmit: async () => {
-        const { name, phone, email } = this.state.form;
-        if (!name.trim() || !phone.trim() || !email.trim()) {
+        const { name, phone, email, cep, address, complement, city, state } = this.state.form;
+        // Complemento é o único campo opcional — sem o endereço completo não
+        // dá para despachar o livro.
+        if (![name, phone, email, cep, address, city, state].every(v => v.trim())) {
           this.setState({ formError: true });
           return;
         }
@@ -475,7 +570,12 @@ class Component extends DCLogic {
         const quantity = this.state.quantity;
         try {
           const checkoutUrl = await createCheckoutLink({ name, phone, email, orderNsu, quantity });
-          sendLeadToSheet({ orderNsu, name, phone, email, quantity, paymentMethod: "Aguardando pagamento", timestamp: formatTimestamp(new Date()) });
+          sendLeadToSheet({
+            orderNsu, name, phone, email, quantity,
+            cep, address, complement, city, state,
+            paymentMethod: "Aguardando pagamento",
+            timestamp: formatTimestamp(new Date())
+          });
           window.location.href = checkoutUrl;
         } catch (err) {
           this.setState({ isSubmitting: false, submitError: true });
@@ -497,10 +597,30 @@ class Component extends DCLogic {
         { num: "05", title: "Verdades confrontadoras" },
         { num: "06", title: "Construir para deixar legado" }
       ],
+      videos: [
+        { id: "YbZLBoFvDb4", tag: "Mensagem", title: "O naufrágio foi um favor" },
+        { id: "Wii1KWZOdcw", tag: "Mensagem", title: "Mate o impostor dentro de você" },
+        { id: "ArySdyRec6k", tag: "Mensagem", title: "Confiando sem saber a história completa" },
+        { id: "xxhbPQ4ZpBE", tag: "Liderança", title: "O líder sobrenatural" },
+        { id: "aFNedumgJtI", tag: "Série · Ep. 01", title: "10 coisas com que todo líder deve se comprometer" },
+        { id: "LpO5ucCJDq8", tag: "Série · Ep. 05", title: "4 desafios de comunicar para jovens" }
+      ].map(v => ({
+        ...v,
+        url: `https://www.youtube.com/watch?v=${v.id}`,
+        // hqdefault existe para qualquer vídeo (maxresdefault nem sempre); a
+        // moldura 4:3 vira 16:9 com object-fit:cover, cortando as tarjas pretas.
+        thumb: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`
+      })),
+      socials: [
+        { name: "Instagram", handle: "@pedrolacava_", text: "O dia a dia, bastidores do livro e recados rápidos.", url: this.props.instagramUrl ?? "https://www.instagram.com/pedrolacava_/" },
+        { name: "YouTube", handle: "Pedro Lacava", text: "Pregações, liderança e a série Construindo a Próxima Geração.", url: this.props.youtubeUrl ?? "https://www.youtube.com/@pedrolacava_" },
+        { name: "WhatsApp", handle: "Fale comigo", text: "Dúvidas sobre o livro, frete, compras em lote e convites.", url: whatsappUrl }
+      ],
       bonuses: [
+        "Envio para todo o Brasil pelos Correios",
         "E-book bônus: Livre-se da Pornografia",
-        "Exemplar reservado com prioridade na retirada do dia 10.10",
-        "Nome na lista de apoiadores da primeira edição"
+        "Pagamento no Pix ou em até 12x no cartão",
+        "Condições especiais para igrejas a partir de 10 exemplares"
       ],
       faqs: faqData.map(([q, a], i) => ({
         q, a,

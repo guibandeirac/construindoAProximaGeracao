@@ -4,9 +4,14 @@
 //
 // Cabeçalhos esperados na linha 1 da planilha (nessa ordem ou em qualquer
 // ordem — a comparação ignora maiúsculas/minúsculas e espaços nas pontas):
-//   Nome | Telefone | Email | Forma de Pagamento | Data | Order NSU | Quantidade | Compra confirmada
+//   Nome | Telefone | Email | CEP | Endereço | Complemento | Cidade | UF |
+//   Forma de Pagamento | Data | Order NSU | Quantidade | Compra confirmada
 //
-// "Compra confirmada" (e "Livro retirado", se existir) devem ser colunas
+// As colunas de endereço entraram quando o envio passou a ser para todo o
+// Brasil. Se elas ainda não existem na planilha, crie-as — o script só
+// preenche cabeçalhos que encontra, então sem elas o endereço se perde.
+//
+// "Compra confirmada" (e "Livro enviado", se existir) devem ser colunas
 // formatadas como caixa de seleção (checkbox) — o script escreve
 // true/false nelas, não texto.
 
@@ -60,11 +65,19 @@ function handleLead(data) {
       case "telefone": return data.phone || "";
       case "email":
       case "e-mail": return data.email || "";
+      case "cep": return data.cep || "";
+      case "endereço":
+      case "endereco": return data.address || "";
+      case "complemento": return data.complement || "";
+      case "cidade": return data.city || "";
+      case "uf":
+      case "estado": return data.state || "";
       case "forma de pagamento": return data.paymentMethod || "";
       case "data": return data.timestamp || "";
       case "order nsu": return data.orderNsu || "";
       case "quantidade": return data.quantity || 1;
       case "compra confirmada": return false;
+      case "livro enviado":
       case "livro retirado": return false;
       default: return "";
     }
@@ -121,6 +134,7 @@ function handlePaymentWebhook(data) {
         case "order nsu": return data.order_nsu || "";
         case "quantidade": return (data.items && data.items.length) ? data.items[0].quantity : "";
         case "compra confirmada": return true;
+        case "livro enviado":
         case "livro retirado": return false;
         default: return "";
       }
@@ -180,14 +194,14 @@ function buildEbookEmailHtml(name) {
               Compra confirmada
             </div>
             <div class="bcpg-email-title" style="font-family:'Anton',Impact,'Arial Black',sans-serif;font-size:32px;line-height:1.1;font-weight:700;text-transform:uppercase;color:#111110;margin-top:12px;">
-              ${greeting}<br>Seu exemplar está garantido.
+              ${greeting}<br>Seu exemplar está a caminho.
             </div>
           </td>
         </tr>
 
         <tr>
           <td style="padding:16px 32px 0;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;color:#3A3730;">
-            Recebemos a confirmação do seu pagamento. Seu exemplar de <strong>Construindo a Próxima Geração</strong>, de Pedro Lacava, está reservado — é só retirar presencialmente no dia <strong>10 de outubro</strong>, no <strong>A13 — CCVIDEIRA CANDELÁRIA</strong>.
+            Recebemos a confirmação do seu pagamento. Seu exemplar de <strong>Construindo a Próxima Geração</strong>, de Pedro Lacava, já está separado. Em breve entramos em contato pelo WhatsApp para combinar o frete e te passar o código de rastreio.
           </td>
         </tr>
 
@@ -197,13 +211,13 @@ function buildEbookEmailHtml(name) {
               <tr>
                 <td style="padding:24px;">
                   <div style="font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E43242;">
-                    Bônus da pré-venda
+                    Seu bônus
                   </div>
                   <div style="font-family:'Anton',Impact,'Arial Black',sans-serif;font-size:20px;font-weight:700;color:#111110;margin-top:8px;text-transform:uppercase;">
                     E-book: Livre-se da Pornografia
                   </div>
                   <div style="font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#3A3730;margin-top:8px;">
-                    Segue em anexo a este e-mail, em PDF. É seu, de presente, como agradecimento por fazer parte da pré-venda.
+                    Segue em anexo a este e-mail, em PDF. É seu, de presente, como agradecimento pela compra.
                   </div>
                 </td>
               </tr>
@@ -213,7 +227,7 @@ function buildEbookEmailHtml(name) {
 
         <tr>
           <td style="padding:32px 32px 8px;font-family:'Nunito Sans',Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#6E6A5E;">
-            Qualquer dúvida sobre a retirada, é só <a href="https://wa.me/message/GY64QNYWFG3JB1" style="color:#E43242;font-weight:700;">chamar no WhatsApp</a>.
+            Qualquer dúvida sobre a entrega, é só <a href="https://wa.me/message/GY64QNYWFG3JB1" style="color:#E43242;font-weight:700;">chamar no WhatsApp</a>.
           </td>
         </tr>
 
